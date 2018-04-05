@@ -1,1 +1,149 @@
 /* You can add global styles to this file, and also import other style files */
+/* Master Styles */
+/* AppComponent's private CSS styles */
+
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+/* ******* step 2: box sizing */
+* {
+	box-sizing: border-box;
+}
+
+/* ******* step 3: box sizing */
+
+/* For mobile phones: */
+[class*="col-"] {
+	width: 100%;
+}
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+	.col-m-4 {width: 25%;}
+	.col-m-3 {width: 33.33333%;}
+	.col-m-2 {width: 50%;}
+	.col-m-content {
+		width: 100%;
+	}
+	.col-m-sidebar {width: 100%;}
+	.col-m-full {
+		width: 100%;
+		padding: 20px 50px;
+	}
+	[class*="header-"] {
+		padding: none;
+	}
+}
+@media only screen and (min-width: 1000px) {
+	/* For desktop: */
+	.col-5p {width: 5%;}
+	.col-10p {width: 10%;}
+	.col-15p {width: 15%;}
+	.col-4 {width: 25%;}
+	.col-3 {width: 33.33333%;}
+	.col-2 {width: 50%;}
+	.col-content {
+		width: 75%;
+	}
+	.col-sidebar {width: 25%;}
+	.col-full {width: 70%;
+		padding: 20px 100px;
+	}
+}
+
+/* ******* step 4: clear both */
+[class*="col-"] {
+	float: left;
+	padding: 5px;
+}
+
+/* ******* step 5: clear both */
+.row::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+
+
+
+
+body {
+	font: 15px/24px Nunito, Arial, sans-serif;
+	color: black;
+	margin: 0px;
+	background: #CED7E6;
+	word-wrap: break-word;
+}
+
+
+h1 {
+  color: #369;
+  font-family: Nunito, Arial, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Nunito, Arial, sans-serif;
+  font-weight: lighter;
+}
+body {
+  margin: 0px;
+}
+body, input[text], button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+a {
+  cursor: pointer;
+  cursor: hand;
+}
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
+}
+
+/* Navigation link styles */
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+}
+
+/* everywhere else */
+* {
+  font-family: Nunito, Arial, sans-serif;
+}
+
+
+/*
+Copyright 2017-2018 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

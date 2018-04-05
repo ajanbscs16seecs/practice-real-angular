@@ -1,0 +1,33 @@
+
+#dp-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+
+
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+	
+}
+@media only screen and (min-width: 1000px) {
+	/* For desktop: */
+	#dp-container{
+    display: block;
+    align-items: left;
+    justify-content: left; 
+  } 
+}
+
+
+
+#profile-img{
+  height: 100px;
+  width: 100px;
+  border-radius:3px;
+  /* box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.2); */
+}
+
+
