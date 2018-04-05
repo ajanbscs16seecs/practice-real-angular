@@ -8,8 +8,6 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,9 +15,9 @@ import { HeroService } from '../hero.service';
   styleUrls: [ './profile.component.css' ]
 })
 export class ProfileComponent implements OnInit {
-  heroes$: Observable<Hero[]>;
+  // heroes$: Observable<Hero[]>;
 
-  
+
 
   profileImgUrl = 'https://designshack.net/tutorialexamples/profile-layout-content-tabs/images/avatar.png';
 
@@ -28,10 +26,10 @@ export class ProfileComponent implements OnInit {
 
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: HeroService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    
+
   }
 }
 
