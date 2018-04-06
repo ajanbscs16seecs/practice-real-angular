@@ -20,9 +20,9 @@
 <body>
 
 
-<!--
-	<mat-sidenav-container class="nav-container" *ngIf="shouldRun">
-		<mat-sidenav #sidenav [mode]="mode.value">
+
+	<mat-sidenav-container class="nav-container">
+		<mat-sidenav mode="side" opened>
 			<p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
 			<p>
 				fs fsd fsda fdsa fasd af dfsd fsa d
@@ -33,14 +33,14 @@
 
 
 		<mat-sidenav-content>
-			 -->
+
 
 
 
 			<div class="header">
-				<div class="header-outer" mat-button (click)="sidenav.toggle()">
+				<div class="header-outer">
 					<div class="header-left">
-						<a id="menu-icon" ><i class="fas fa-bars"></i></a>
+						<a id="menu-icon"  mat-button (click)="sidenav.toggle()"><i class="fas fa-bars"></i></a>
 						<a href="#">{{title}}</a>
 					</div>
 					<div class="header-right">
@@ -162,9 +162,9 @@
 
 
 
-<!--
+
 		</mat-sidenav-content>
-	</mat-sidenav-container> -->
+	</mat-sidenav-container>
 
 	<div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>
 

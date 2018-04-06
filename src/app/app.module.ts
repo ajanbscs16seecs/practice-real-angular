@@ -1,26 +1,33 @@
+
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 
+import {FormsModule} from '@angular/forms';
 
-import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { MessagesComponent }    from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
 
-import { MessageService }       from './services/message.service'
+import { MessageService }       from './services/message.service';
 
 import { MaterialModule } from './material.module';
+import {MatSidenavModule} from '@angular/material';
+
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    BrowserAnimationsModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

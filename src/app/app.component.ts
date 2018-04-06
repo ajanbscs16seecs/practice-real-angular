@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-
+// import{ MatSidenav} from '@angular/material/sidenav';
+// import{ MatSidenavContent} from '@angular/material/sidenav';
+// import{ MatSidenavContainer} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PracticeReal.com';
-  username = '@jan.arifullah';
+  username = '@jan.allah';
 
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+
 }
+
 
 
 /*
