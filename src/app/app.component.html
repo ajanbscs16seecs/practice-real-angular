@@ -29,11 +29,13 @@
 
 
 	<mat-sidenav-container class="nav-container">
-		<mat-sidenav mode="side" opened>
-			<p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-			<p>
-				fs fsd fsda fdsa
-			</p>
+		<mat-sidenav #snav [mode]='over'>
+			<p><button mat-button (click)="snav.toggle()">Toggle</button></p>
+			<nav>
+				<a routerLink="/dashboard">Dashboard</a><br/>
+				<a routerLink="/heroes">Heroes</a><br/>
+				<a routerLink="/profile">Profile</a><br/>
+			</nav>
 		</mat-sidenav>
 
 
@@ -47,7 +49,7 @@
 			<div class="header">
 				<div class="header-outer">
 					<div class="header-left">
-						<a id="menu-icon"  mat-button (click)="sidenav.toggle()"><i class="fas fa-bars"></i></a>
+						<a id="menu-icon"  mat-button (click)="snav.toggle()"><i class="fas fa-bars"></i></a>
 						<a href="#">{{title}}</a>
 					</div>
 					<div class="header-right">
