@@ -1,4 +1,6 @@
-
+/*
+* this file contains app level dependencies
+*/
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { HttpClientModule }    from '@angular/common/http';
@@ -16,6 +18,7 @@ import { MessageService }       from './services/message.service';
 
 import { MaterialModule } from './material.module';
 import {MatSidenavModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,6 +30,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     MatSidenavModule,
+    MatButtonModule,
     BrowserAnimationsModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
