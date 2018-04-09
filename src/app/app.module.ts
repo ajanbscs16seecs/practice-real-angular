@@ -18,12 +18,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { MessageService }       from './services/message.service';
 
-import { MaterialModule } from './material.module';
 import {MatSidenavModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 
 
@@ -118,7 +118,7 @@ export class DemoMaterialModule {}
     HttpClientModule,
     MatSidenavModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     DemoMaterialModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests

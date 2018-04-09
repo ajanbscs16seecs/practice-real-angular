@@ -30,12 +30,9 @@
 
 	<mat-sidenav-container class="nav-container">
 		<mat-sidenav #snav [mode]='over'>
-			<p><button mat-button (click)="snav.toggle()">Toggle</button></p>
-			<nav>
-				<a routerLink="/dashboard">Dashboard</a><br/>
-				<a routerLink="/heroes">Heroes</a><br/>
-				<a routerLink="/profile">Profile</a><br/>
-			</nav>
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3lOZW7l5eIEpprFJzpwxn60-nIdr91J33udWAxU300a-7Puyu">
+			<button mat-button routerLink="/dashboard">Dashboard</button>
+			<button mat-button routerLink="/profile">Profile</button>
 		</mat-sidenav>
 
 
@@ -72,24 +69,12 @@
 
 
 
-						<div class="col-sidebar col-m-sidebar sidebar">
-
-							<nav>
-								<a routerLink="/dashboard">Dashboard</a>
-								<a routerLink="/heroes">Heroes</a>
-								<a routerLink="/profile">Profile</a>
-							</nav>
-
-						</div>
-
-
-
 
 						<div class="col-content col-m-content content">
 
 							<router-outlet></router-outlet>
 							<app-messages></app-messages>
-
+<!--
 							<h1>Responsive</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpis
 								sit amet interdum ultrices, sapien mauris maximus arcu, non luctus felis risus id lacus. Pellentesque habitant morbi
@@ -116,8 +101,22 @@
 									turpis sit amet interdum ultrices, sapien mauris maximus arcu, non luctus felis risus id lacus. Pellentesque habitant
 									morbi tristique.</p>
 
-							</div>
+							</div> -->
 						</div>
+
+
+
+						<div class="col-sidebar col-m-sidebar sidebar">
+
+							<nav>
+								<a routerLink="/dashboard">Dashboard</a>
+								<a routerLink="/heroes">Heroes</a>
+								<a routerLink="/profile">Profile</a>
+							</nav>
+
+						</div>
+
+
 
 
 
