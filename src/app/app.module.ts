@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { ProfileComponent }  from './profile/profile.component';
+import { TaskDetailsComponent }  from './task-details/task-details.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -24,7 +25,8 @@ import {MatButtonModule} from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-
+import{PhotoSwipe} from 'photoswipe';
+import{PhotoSwipeUI_Default} from 'PhotoSwipeUI_Default';
 
 
 import {
@@ -65,7 +67,6 @@ import {
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SidenavResponsiveExample} from './app/sidenav-responsive-example';
 
 @NgModule({
   exports: [
@@ -120,6 +121,7 @@ export class DemoMaterialModule {}
     MatButtonModule,
     BrowserAnimationsModule,
     DemoMaterialModule
+    
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -132,7 +134,8 @@ export class DemoMaterialModule {}
     AppComponent,
     DashboardComponent,
     MessagesComponent,
-    ProfileComponent
+    ProfileComponent,
+    TaskDetailsComponent
   ],
   providers: [ MessageService ],
   bootstrap: [ AppComponent ]
