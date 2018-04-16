@@ -13,11 +13,11 @@ import {
 
 
 @Component({
-  selector: 'app-task-details',
-  templateUrl: './task-details.component.html',
-  styleUrls: [ './task-details.component.css' ]
+  selector: 'app-task-add',
+  templateUrl: './task-add.component.html',
+  styleUrls: [ './task-add.component.css' ]
 })
-export class TaskDetailsComponent implements OnInit {
+export class TaskAddComponent implements OnInit {
   // heroes$: Observable<Hero[]>;
 
 

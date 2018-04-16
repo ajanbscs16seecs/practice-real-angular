@@ -8,7 +8,8 @@ mat-sidenav{
 @media only screen and (min-width: 600px) {
 	/* For tablets: */
 	.col-m-content {
-		width: 75%;
+		/* change it to 75 when side bar */
+		width: 100%;
 	}
 	.col-m-sidebar {width: 25%;}
 	.col-m-full {
@@ -25,7 +26,8 @@ mat-sidenav{
 @media only screen and (min-width: 1000px) {
 	/* For desktop: */
 	.col-content {
-		width: 75%;
+		/* change it to 75 when side bar */
+		width: 100%;
 	}
 	.col-sidebar {width: 25%;}
 	.col-full {width: 70%;
@@ -94,7 +96,6 @@ mat-sidenav *{
 
 .full {
 	margin: 30px auto;
-	min-height: 600px;
 }
 
 
@@ -136,6 +137,10 @@ mat-sidenav *{
 
 
 
+
+.footer{
+	background-color: #6f657c;
+}
 
 
 

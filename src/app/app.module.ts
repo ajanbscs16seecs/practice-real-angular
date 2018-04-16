@@ -14,14 +14,11 @@ import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
+import { TaskAddComponent }  from './task-add/task-add.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MessageService }       from './services/message.service';
-
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 
 
 import {
@@ -56,8 +53,7 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule,
-  MatSidenavModule
+  MatTooltipModule
 } from '@angular/material';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -96,8 +92,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
-    MatSidenavModule
+    MatTooltipModule
   ]
 })
 export class DemoMaterialModule {}
@@ -129,7 +124,8 @@ export class DemoMaterialModule {}
     DashboardComponent,
     MessagesComponent,
     ProfileComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    TaskAddComponent
   ],
   providers: [ MessageService ],
   bootstrap: [ AppComponent ]

@@ -11,12 +11,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
+import { TaskAddComponent }  from './task-add/task-add.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'profile', component:  ProfileComponent},
-  { path: 'task/:id', component:  TaskDetailsComponent}
+  { path: 'task/:id', component:  TaskDetailsComponent},
+  { path: 'task-add', component:  TaskAddComponent}
 ];
 
 @NgModule({
