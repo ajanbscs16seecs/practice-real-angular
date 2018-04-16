@@ -25,8 +25,6 @@ import {MatButtonModule} from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import{PhotoSwipe} from 'photoswipe';
-import{PhotoSwipeUI_Default} from 'PhotoSwipeUI_Default';
 
 
 import {
@@ -64,7 +62,6 @@ import {
   MatTooltipModule,
   MatSidenavModule
 } from '@angular/material';
-import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -121,7 +118,7 @@ export class DemoMaterialModule {}
     MatButtonModule,
     BrowserAnimationsModule,
     DemoMaterialModule
-    
+
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
