@@ -19,9 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { MessageService }       from './services/message.service';
 
-import {MatSidenavModule} from '@angular/material';
-import {MatButtonModule} from '@angular/material';
-
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
