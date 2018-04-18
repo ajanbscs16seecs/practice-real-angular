@@ -16,10 +16,14 @@ import { DashboardComponent }   from './dashboard/dashboard.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
 import { TaskAddComponent }  from './task-add/task-add.component';
+import { TaskSubmitComponent }  from './task-submit/task-submit.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { MessageService }       from './services/message.service';
+import { MessageService } from './services/message.service';
+
+
+import { Hammer }from 'hammerjs';
 
 
 import {
@@ -58,6 +62,8 @@ import {
 } from '@angular/material';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   exports: [
@@ -113,6 +119,7 @@ export class DemoMaterialModule {}
     DemoMaterialModule
 
 
+
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -127,9 +134,10 @@ export class DemoMaterialModule {}
     MessagesComponent,
     ProfileComponent,
     TaskDetailsComponent,
-    TaskAddComponent
+    TaskAddComponent,
+    TaskSubmitComponent
   ],
-  providers: [ MessageService ],
+  providers: [ MessageService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

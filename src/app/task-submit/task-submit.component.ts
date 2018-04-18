@@ -21,11 +21,11 @@ import {ENTER, COMMA} from '@angular/cdk/keycodes';
 
 
 @Component({
-  selector: 'app-task-add',
-  templateUrl: './task-add.component.html',
-  styleUrls: [ './task-add.component.css' ]
+  selector: 'app-task-submit',
+  templateUrl: './task-submit.component.html',
+  styleUrls: [ './task-submit.component.css' ]
 })
-export class TaskAddComponent implements OnInit {
+export class TaskSubmitComponent implements OnInit {
   // heroes$: Observable<Hero[]>;
 
 

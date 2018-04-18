@@ -30,8 +30,9 @@ mat-sidenav{
 		width: 100%;
 	}
 	.col-sidebar {width: 25%;}
-	.col-full {width: 70%;
-		padding: 20px 100px;
+	.col-full {
+	/* 70% otherwise */
+		width: 100%;
 	}
 	.header-left{
 		padding-left: 15%;
