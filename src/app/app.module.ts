@@ -15,6 +15,7 @@ import { DashboardComponent }   from './dashboard/dashboard.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
 import { TaskAddComponent }  from './task-add/task-add.component';
+import { TaskSubmitComponent }  from './task-submit/task-submit.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -131,7 +132,8 @@ export class DemoMaterialModule {}
     MessagesComponent,
     ProfileComponent,
     TaskDetailsComponent,
-    TaskAddComponent
+    TaskAddComponent,
+    TaskSubmitComponent
   ],
   providers: [ MessageService],
   bootstrap: [ AppComponent ]
