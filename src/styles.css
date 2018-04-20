@@ -35,11 +35,8 @@
 	.col-m-content {
 		width: 100%;
 	}
-	.col-m-sidebar {width: 100%;}
-	.col-m-full {
-		width: 100%;
-		padding: 20px 50px;
-	}
+
+
 	[class*="header-"] {
 		padding: none;
 	}
@@ -49,15 +46,15 @@
 	.col-5p {width: 5%;}
 	.col-10p {width: 10%;}
 	.col-15p {width: 15%;}
+	.col-for-sides {width: 15%;}
 	.col-4 {width: 25%;}
 	.col-3 {width: 33.33333%;}
 	.col-2 {width: 50%;}
-	.col-content {
+	.col-for-page {
 		width: 75%;
 	}
-	.col-sidebar {width: 25%;}
-	.col-full {width: 70%;
-		padding: 20px 100px;
+	.col-full {
+		width: 100%;
 	}
 }
 
@@ -125,6 +122,17 @@ button:disabled {
   color: #aaa;
   cursor: auto;
 }
+
+.button-row {
+  display: block;
+  margin: 10px 0px;
+	align-items: center;
+}
+
+.button-row *{
+  float: right;
+}
+
 
 /* Navigation link styles */
 nav a {

@@ -19,6 +19,8 @@ import {ENTER, COMMA} from '@angular/cdk/keycodes';
 
 
 
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-task-add',
@@ -97,39 +99,7 @@ export class TaskAddComponent implements OnInit {
 
 
 
-
-
-
-  //
-  // currentUpload: Upload;
-  // dropzoneActive:boolean = false;
-  //
-  // constructor() { }
-  //
-  // dropzoneState($event: boolean) {
-  //   this.dropzoneActive = $event;
-  // }
-  //
-  // handleDrop(fileList: FileList) {
-  //
-  //   let filesIndex = _.range(fileList.length)
-  //
-  //   _.each(filesIndex, (idx) => {
-  //     this.currentUpload = new Upload(fileList[idx]);
-  //     this.upSvc.pushUpload(this.currentUpload)}
-  //   )
-  // }
-  //
-  //
-
-
-
-
-
-
-
   constructor() {
-
   }
 
 
@@ -137,6 +107,7 @@ export class TaskAddComponent implements OnInit {
   ngOnInit(): void {
 
 
+      // $("#upload-attachment").dropzone({ url: "/file/post" });
 
   }
 }

@@ -1,26 +1,36 @@
 
-<div class="form">
+<div class="row">
 
-    <h2>Post a Soulution.</h2>
+  <div class="col-for-sides"></div>
 
+  <div class="col-for-page">
 
-    
+    <div class="form">
 
-
-
-
-
-
-      <div class="button-row">
-        <button mat-raised-button color="accent">Submit</button>
-      </div>
+        <h2>Post a Soulution.</h2>
 
 
 
 
+        <form action="/file-upload" class="dropzone">
+          <div class="fallback">
+            <input name="file" type="file" multiple />
+          </div>
+        </form>
+        <mat-checkbox>This assignment is my own work, except where I have acknowledged the use of the works of other people.</mat-checkbox>
+
+        <div class="button-row">
+          <button mat-raised-button color="accent">Submit</button>
+        </div>
+
+    </div>
 
 
 
+
+  </div>
+
+  <div class="col-for-sides"></div>
 
 
 

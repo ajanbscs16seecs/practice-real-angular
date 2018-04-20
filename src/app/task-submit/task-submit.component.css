@@ -11,10 +11,3 @@
 .textarea-description{
   height: 100px;
 }
-
-
-.button-row {
-  display: flex;
-  float: right;
-  justify-content: space-around;
-}

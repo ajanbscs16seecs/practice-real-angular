@@ -23,7 +23,7 @@
         "../node_modules/photoswipe/dist/photoswipe.css",
         "../node_modules/photoswipe/dist/default-skin/default-skin.css"
       ],
-      "scripts": [],
+      "scripts": ["../node_modules/jquery/dist/jquery.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
