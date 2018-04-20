@@ -26,6 +26,8 @@ import { MessageService } from './services/message.service';
 import { Hammer }from 'hammerjs';
 
 
+import * as $ from 'jquery';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,

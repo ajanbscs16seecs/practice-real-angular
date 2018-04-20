@@ -1,21 +1,67 @@
 
-<div>
 
-<div id="dp-container">
-  <img id="profile-img" src="{{profileImgUrl}}"/>
-</div>
-  <div>
+<div class="row">
 
-    <p>{{publicName}}</p>
+  <div class="col-for-sides"></div>
+
+  <div class="col-for-page">
 
     <p>{{username}}</p>
+
+    <div>
+
+      <div id="dp-container">
+        <img id="profile-img" src="{{profileImgUrl}}"/>
+      </div>
+
+
+
+
+      <div>
+        <p>{{publicName}}</p>
+
+        <p>{{username}}</p>
+
+
+
+          <mat-tab-group>
+            <mat-tab label="Discussions">
+
+              <div *ngFor="let comment of dicussions">
+                {{comment.text}}
+                <mat-divider></mat-divider>
+
+              </div>
+
+
+
+            </mat-tab>
+            <mat-tab label="Submissions">
+              <h3>Some more tab content</h3>
+              <p>...</p>
+
+
+
+
+            </mat-tab>
+          </mat-tab-group>
+
+
+
+
+
+
+      </div>
+
+
+    </div>
 
 
 
 
   </div>
 
-
+  <div class="col-for-sides"></div>
 
 
 

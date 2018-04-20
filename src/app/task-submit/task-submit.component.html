@@ -1,57 +1,36 @@
 
-<div class="form">
+<div class="row">
 
-    <h2>Post a task.</h2>
+  <div class="col-for-sides"></div>
 
+  <div class="col-for-page">
 
-      <mat-form-field>
-        <input matInput placeholder="Title">
-      </mat-form-field>
+    <div class="form">
 
-      <mat-form-field>
-        <textarea matInput placeholder="Description"></textarea>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-select placeholder="Select">
-          <mat-option value="option">Option</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-
-      <mat-form-field class="demo-chip-list">
-        <mat-chip-list #chipList>
-          <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
-                   [removable]="removable" (remove)="remove(tag)">
-            {{tag.name}}
-          <mat-icon matChipRemove *ngIf="removable"><i class="far fa-times-circle"></i></mat-icon>
-          </mat-chip>
-          <input placeholder="Tags"
-                 [matChipInputFor]="chipList"
-                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                 [matChipInputAddOnBlur]="addOnBlur"
-                 (matChipInputTokenEnd)="add($event)" />
-        </mat-chip-list>
-      </mat-form-field>
+        <h2>Post a Soulution.</h2>
 
 
 
 
+        <form action="/file-upload" class="dropzone">
+          <div class="fallback">
+            <input name="file" type="file" multiple />
+          </div>
+        </form>
+        <mat-checkbox>This assignment is my own work, except where I have acknowledged the use of the works of other people.</mat-checkbox>
+
+        <div class="button-row">
+          <button mat-raised-button color="accent">Submit</button>
+        </div>
+
+    </div>
 
 
 
 
+  </div>
 
-      <div class="button-row">
-        <button mat-raised-button color="accent">Submit</button>
-      </div>
-
-
-
-
-
-
-
+  <div class="col-for-sides"></div>
 
 
 
