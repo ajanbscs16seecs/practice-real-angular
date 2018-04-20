@@ -27,8 +27,6 @@ import { Hammer }from 'hammerjs';
 
 import * as $ from 'jquery';
 
-
-
 import {
   MatAutocompleteModule,
   MatButtonModule,
