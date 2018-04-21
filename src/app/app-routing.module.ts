@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'profile', component:  ProfileComponent},
   { path: 'task/:id', component:  TaskDetailsComponent},
-  { path: 'task-add', component:  TaskAddComponent},
+  { path: 'task-new', component:  TaskAddComponent},
   { path: 'task-submit/:id', component:  TaskSubmitComponent}
 ];
 
