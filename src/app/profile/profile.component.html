@@ -6,40 +6,47 @@
 
   <div class="col-for-page">
 
-    <p>{{username}}</p>
 
     <div>
 
       <div id="dp-container">
         <img id="profile-img" src="{{profileImgUrl}}"/>
+
+      </div>
+      <div id="title-options">
+        <div class="title-option" id ="fav-star"><i class="fas fa-user-plus"></i></div>
+        <div class="title-option" id ="fav-star"> 685 <i class="fas fa-plus-square"></i></div>
+        <mat-divider></mat-divider>
+
       </div>
 
 
 
+      <div class="page-content">
 
-      <div>
+
         <p>{{publicName}}</p>
 
-        <p>{{username}}</p>
+        <a>@{{username}}</a>
+
 
 
 
           <mat-tab-group>
-            <mat-tab label="Discussions">
+            <mat-tab label="About">
+
+              <p>{{bio}}<p>
+
+
+
+            </mat-tab>
+            <mat-tab label="Solutions">
 
               <div *ngFor="let comment of dicussions">
                 {{comment.text}}
                 <mat-divider></mat-divider>
 
               </div>
-
-
-
-            </mat-tab>
-            <mat-tab label="Submissions">
-              <h3>Some more tab content</h3>
-              <p>...</p>
-
 
 
 

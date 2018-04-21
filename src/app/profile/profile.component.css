@@ -2,25 +2,14 @@
 #dp-container{
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center
+  justify-content: center;
 }
 
+#title-options{
 
+  padding: 10px 10px;
 
-@media only screen and (min-width: 600px) {
-	/* For tablets: */
-	
 }
-@media only screen and (min-width: 1000px) {
-	/* For desktop: */
-	#dp-container{
-    display: block;
-    align-items: left;
-    justify-content: left; 
-  } 
-}
-
 
 
 #profile-img{
@@ -30,4 +19,54 @@
   /* box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.2); */
 }
 
+#title-options:after {
+    clear: both;
+}
 
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+
+}
+@media only screen and (min-width: 1000px) {
+	/* For desktop: */
+	#dp-container{
+    float: left;
+    width: 20%;
+  }
+
+  #profile-img{
+    height: 90%;
+    width: 90%;
+  }
+
+  #title-options{
+    float: right;
+    width: 80%;
+  }
+
+  #title-options::after {
+      clear: both;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+.title-option{
+  width: 50%;
+  text-align: center;
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.page-content{
+  clear: both;
+  padding: 20px 10px;
+}

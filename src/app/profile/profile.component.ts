@@ -24,6 +24,9 @@ export class ProfileComponent implements OnInit {
   username = 'jan.arifullah';
   publicName = 'Arifullah Jan';
 
+
+  bio = 'I’m a web developer. I spend my whole day, practically every day, experimenting with HTML, CSS, and JavaScript; dabbling with Python and Ruby; and inhaling a wide variety of potentially useless information through a few hundred RSS feeds. I build websites that delight and inform. I do it well.';
+
   private searchTerms = new Subject<string>();
 
   constructor() {}
