@@ -61,7 +61,6 @@
 /* ******* step 4: clear both */
 [class*="col-"] {
 	float: left;
-	padding: 5px;
 }
 
 /* ******* step 5: clear both */

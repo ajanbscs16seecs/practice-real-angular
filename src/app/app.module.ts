@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 
 import { AppComponent }         from './app.component';
 import { SigninComponent }   from './signin/signin.component';
+import { SignupComponent }   from './signup/signup.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
@@ -132,6 +133,7 @@ export class DemoMaterialModule {}
     AppComponent,
     DashboardComponent,
     SigninComponent,
+    SignupComponent,
     MessagesComponent,
     ProfileComponent,
     TaskDetailsComponent,

@@ -14,7 +14,7 @@ mat-sidenav{
 	.col-m-sidebar {width: 25%;}
 	.col-m-full {
 		width: 100%;
-		padding: 20px 0px;
+		padding: 0px 0px;
 	}
 	[class*="header-"] {
 		padding: 0px;
@@ -62,7 +62,7 @@ mat-sidenav *{
 .header-outer{
 	width: 100%;
 	height: 50px;
-	background: #494975;
+	background: #47f7df;
 	color: #072a4e;
 }
 
@@ -96,7 +96,7 @@ mat-sidenav *{
 
 
 .full {
-	margin: 30px auto;
+	margin: 0px auto;
 }
 
 
