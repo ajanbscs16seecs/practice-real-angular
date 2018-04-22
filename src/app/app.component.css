@@ -12,10 +12,7 @@ mat-sidenav{
 		width: 100%;
 	}
 	.col-m-sidebar {width: 25%;}
-	.col-m-full {
-		width: 100%;
-		padding: 0px 0px;
-	}
+
 	[class*="header-"] {
 		padding: 0px;
 	}
@@ -30,10 +27,6 @@ mat-sidenav{
 		width: 100%;
 	}
 	.col-sidebar {width: 25%;}
-	.col-full {
-	/* 70% otherwise */
-		width: 100%;
-	}
 	.header-left{
 		padding-left: 15%;
 
@@ -95,9 +88,6 @@ mat-sidenav *{
 
 
 
-.full {
-	margin: 0px auto;
-}
 
 
 
@@ -120,8 +110,10 @@ mat-sidenav *{
 .content-inner{
 	min-width:150px;
 }
+.content{
+	padding: 1px;
+}
 .sidebar{
-	padding: 10px;
 	/* background: #42a1f4; */
 	text-align: center;
   float: right;
