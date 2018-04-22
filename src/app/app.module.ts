@@ -9,6 +9,7 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import {FormsModule} from '@angular/forms';
 
+import { HighlightModule } from 'ngx-highlightjs';
 
 import { AppComponent }         from './app.component';
 import { SigninComponent }   from './signin/signin.component';
@@ -21,6 +22,7 @@ import { TaskAddComponent }  from './task-add/task-add.component';
 import { TaskSubmitComponent }  from './task-submit/task-submit.component';
 import { AboutComponent }  from './about/about.component';
 import { SupportComponent }  from './support/support.component';
+import { AttachmentComponent }  from './attachment/attachment.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -123,7 +125,9 @@ export class DemoMaterialModule {}
     MatSidenavModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    HighlightModule.forRoot({ theme: 'default' }),
+
 
 
 
@@ -147,6 +151,7 @@ export class DemoMaterialModule {}
     TaskSubmitComponent,
     AboutComponent,
     SupportComponent,
+    AttachmentComponent,
     SidebarComponent
   ],
   providers: [ MessageService],

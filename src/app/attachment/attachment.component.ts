@@ -1,6 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
-
-
+import { HighlightResult } from 'ngx-highlightjs';
 
 @Component({
   selector: 'app-attachment',
@@ -9,6 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttachmentComponent implements OnInit {
 
+  response: HighlightResult;
+
+  code = `function myFunction() {
+  document.getElementById("demo1").innerHTML = "Hello there!";
+  document.getElementById("demo2").innerHTML = "How are you?";
+}`;
 
   constructor() { }
 
@@ -16,6 +22,15 @@ export class AttachmentComponent implements OnInit {
 
   }
 
+  onHighlight(e) {
+    this.response = {
+      language: e.language,
+      r: e.r,
+      second_best: '{...}',
+      top: '{...}',
+      value: '{...}'
+    }
+  }
 
 }
 

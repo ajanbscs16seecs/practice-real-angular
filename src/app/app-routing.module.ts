@@ -13,6 +13,7 @@ import { DashboardComponent }   from './dashboard/dashboard.component';
 import { BrowseComponent }   from './browse/browse.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
+import { AttachmentComponent }  from './attachment/attachment.component';
 import { TaskAddComponent }  from './task-add/task-add.component';
 import { TaskSubmitComponent }  from './task-submit/task-submit.component';
 import { AboutComponent }  from './about/about.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component:  ProfileComponent},
   { path: 'task/:id', component:  TaskDetailsComponent},
+  { path: 'attachment/:id', component:  AttachmentComponent},
   { path: 'task-new', component:  TaskAddComponent},
   { path: 'task-submit/:id', component:  TaskSubmitComponent},
   { path: 'about', component:  AboutComponent},

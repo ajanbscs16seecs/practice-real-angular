@@ -2,27 +2,31 @@
 
 <div class="row">
 
-  <div class="col-for-sides ">d</div>
+  <div class="col-for-sides"></div>
 
   <div class="col-for-page padding-responsive">
 
-    <h2>Rate Us</h2>
-      <span class="fa fa-star "></span>
-      <span class="fa fa-star "></span>
-      <span class="fa fa-star "></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span><br><br>
+    <div class="list-item-wrapper" *ngFor="let task of tasks">
+      <mat-card class="task-card">
+        <mat-card-header>
+          <div mat-card-avatar><img src="{{task.dpurl}}" height='100%'/></div>
+          <mat-card-title>{{task.title}}</mat-card-title>
+        </mat-card-header>
 
-      <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a href="#" class="active">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
-      </div>
+        <mat-card-content>
+            <p>{{task.description}}<p>
+        </mat-card-content>
+      </mat-card>
+
+
+    </div>
+
+
+    <mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = $event">
+    </mat-paginator>
 
 
 
@@ -30,8 +34,8 @@
 
   </div>
 
-  <app-sidebar class="col-for-sides">
-  </app-sidebar>
+  <app-sidebar class="col-for-sides"></app-sidebar>
+
 
 
 

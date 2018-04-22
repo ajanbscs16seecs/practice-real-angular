@@ -6,11 +6,52 @@
 
   <div class="col-for-page">
 
-    <h1>Howe Page!!!</h1>
+    <h3>Attachment of A's solution for xxxxxx</h3>
+    <br>
 
+    <mat-card class="file-card">
+      <mat-card-header>
+        <mat-card-title>filename.js</mat-card-title>
+        <mat-card-subtitle>javascript</mat-card-subtitle>
+      </mat-card-header>
 
-    <button mat-button routerLink="/task/5">Visit k</button>
+      <mat-card-content>
+          <pre><code highlight [textContent]="code" (highlighted)="onHighlight($event)"></code></pre>
 
+          <h4>Highlight response</h4>
+          <pre>{{ response | json }}</pre>
+      </mat-card-content>
+    </mat-card>
+
+    <br>
+
+    <mat-card class="file-card">
+      <mat-card-header>
+        <mat-card-title>filename.js</mat-card-title>
+        <mat-card-subtitle>javascript</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+          <pre><code highlight [textContent]="code" (highlighted)="onHighlight($event)"></code></pre>
+
+          <h4>Highlight response</h4>
+          <pre>{{ response | json }}</pre>
+      </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="file-card">
+      <mat-card-header>
+        <mat-card-title>filename.js</mat-card-title>
+        <mat-card-subtitle>javascript</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+          <pre><code highlight [textContent]="code" (highlighted)="onHighlight($event)"></code></pre>
+
+          <h4>Highlight response</h4>
+          <pre>{{ response | json }}</pre>
+      </mat-card-content>
+    </mat-card>
 
 
 
