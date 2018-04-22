@@ -110,9 +110,7 @@ mat-sidenav *{
 .content-inner{
 	min-width:150px;
 }
-.content{
-	padding: 1px;
-}
+
 .sidebar{
 	/* background: #42a1f4; */
 	text-align: center;
