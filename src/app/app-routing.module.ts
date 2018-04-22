@@ -9,6 +9,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent }   from './signin/signin.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
+import { BrowseComponent }   from './browse/browse.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
 import { TaskAddComponent }  from './task-add/task-add.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'profile', component:  ProfileComponent},
   { path: 'task/:id', component:  TaskDetailsComponent},
   { path: 'task-add', component:  TaskAddComponent},
-  { path: 'task-submit/:id', component:  TaskSubmitComponent}
+  { path: 'task-submit/:id', component:  TaskSubmitComponent},
+  { path: 'browse', component: BrowseComponent },
 ];
 
 @NgModule({
