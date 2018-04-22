@@ -64,9 +64,9 @@ export class TaskAddComponent implements OnInit {
   separatorKeysCodes = [ENTER, COMMA];
 
   tags = [
-    { name: 'Lemon' },
-    { name: 'Lime' },
-    { name: 'Apple' },
+    { name: 'Technical Writing' },
+    { name: 'Buisness' },
+    { name: 'Project Proposal' },
   ];
 
 

@@ -14,12 +14,17 @@ import { AppComponent }         from './app.component';
 import { SigninComponent }   from './signin/signin.component';
 import { SignupComponent }   from './signup/signup.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
+import { BrowseComponent }   from './browse/browse.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
 import { TaskAddComponent }  from './task-add/task-add.component';
 import { TaskSubmitComponent }  from './task-submit/task-submit.component';
+import { AboutComponent }  from './about/about.component';
+import { SupportComponent }  from './support/support.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
+
+import {SidebarComponent} from './sidebar/sidebar.component';
 
 import { MessageService } from './services/message.service';
 
@@ -132,13 +137,17 @@ export class DemoMaterialModule {}
   declarations: [
     AppComponent,
     DashboardComponent,
+    BrowseComponent,
     SigninComponent,
     SignupComponent,
     MessagesComponent,
     ProfileComponent,
     TaskDetailsComponent,
     TaskAddComponent,
-    TaskSubmitComponent
+    TaskSubmitComponent,
+    AboutComponent,
+    SupportComponent,
+    SidebarComponent
   ],
   providers: [ MessageService],
   bootstrap: [ AppComponent ]

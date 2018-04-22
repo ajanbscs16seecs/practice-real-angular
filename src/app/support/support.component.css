@@ -1,0 +1,10 @@
+/* DashboardComponent's private CSS styles */
+.form {
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form > * {
+  width: 100%;
+}

@@ -34,6 +34,8 @@
 			<button mat-button routerLink="/dashboard">Dashboard</button>
 			<button mat-button routerLink="/profile">Profile</button>
 			<button mat-button routerLink="/task/5">Smaple Task</button>
+			<button mat-button routerLink="/about">About Us</button>
+			<button mat-button routerLink="/support">Contact/Support</button>
 		</mat-sidenav>
 
 
@@ -51,7 +53,7 @@
 						<a href="#">{{title}}</a>
 					</div>
 					<div class="header-right">
-						<a routerLink="/dashboard">Find Tasks</a>
+						<a routerLink="/browse">Find Tasks</a>
 						<a routerLink="/task-new">Post Something</a>
 						<a routerLink="/signin">Sign In</a>
 						<a routerLink="/profile">{{username}}</a>
@@ -68,18 +70,9 @@
 				<!-- <div class="col-15p"></div> -->
 				<!-- <div class="col-full col-m-full full"> -->
 
-					<div class="row">
 
-
-
-
-
-						<div class="col-content col-m-content content">
-
-							<router-outlet></router-outlet>
-							<app-messages></app-messages>
-
-						</div>
+				<router-outlet></router-outlet>
+				<app-messages></app-messages>
 
 
 
@@ -96,9 +89,6 @@
 
 
 
-
-					</div>
-
 				<!-- </div> -->
 
 				<!-- <div class="col-15p"></div> -->
@@ -110,34 +100,38 @@
 			<div class="row footer">
 				<div class="footer">
 
-					<div class="col-15p"></div>
+					<div class="col-for-sides"></div>
 
-					<div class="col-full col-m-full full">
-						<div class="col-3 col-m-3">
-							<h3><i class="fas fa-address-card"></i> Contact Us</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpis
-								sit amet interdum ultrices, sapien mauris maximus arcu, non luctus felis risus id lacus. Pellentesque habitant morbi
-								tristique.</p>
+					<div class="col-for-page">
 
-						</div>
-						<div class="col-3 col-m-3">
-							<h3><i class="fab fa-amilia"></i> Follow Us</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpis
-								sit amet interdum ultrices, sapien mauris maximus arcu, non luctus felis risus id lacus. Pellentesque habitant morbi
-								tristique.</p>
+						<div class="row">
+							<div class="col-3 col-m-3">
+								<h3><i class="fas fa-address-card"></i> Contact Us</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpis
+									sit amet interdum ultrices, sapien mauris maximus arcu, non luctus felis risus id lacus. Pellentesque habitant morbi
+									tristique.</p>
 
-						</div>
-						<div class="col-3 col-m-3">
-							<h3>Other stuff</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpis
-								sit amet interdum ultrices, sapien mauris maximus arcu, non luctus felis risus id lacus. Pellentesque habitant morbi
-								tristique.</p>
+							</div>
+							<div class="col-3 col-m-3">
+								<h3><i class="fab fa-amilia"></i> Follow Us</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpis
+									sit amet interdum ultrices, sapien mauris maximus arcu, non luctus felis risus id lacus. Pellentesque habitant morbi
+									tristique.</p>
+
+							</div>
+							<div class="col-3 col-m-3">
+								<h3>Other stuff</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpis
+									sit amet interdum ultrices, sapien mauris maximus arcu, non luctus felis risus id lacus. Pellentesque habitant morbi
+									tristique.</p>
+
+							</div>
 
 						</div>
 					</div>
 
 
-					<div class="col-15p"></div>
+					<div class="col-for-sides"></div>
 
 
 				</div>

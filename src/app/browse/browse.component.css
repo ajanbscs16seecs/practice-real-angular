@@ -1,0 +1,56 @@
+/* DashboardComponent's private CSS styles */
+
+
+#search-field{
+  width: 90%;
+  float: left;
+}
+
+#search-field *{
+  width: 100%;
+}
+
+#search-button{
+  float: left;
+  width: auto;
+}
+#search-button::after{
+  clear: both;
+}
+
+
+.cell{
+  width: 50%;
+  float: left;
+  text-align: center;
+  padding: 20px;
+}
+.icon{
+  color: #072a4e;
+  font-size: 80px;
+
+}
+
+
+@media (min-width: 600px) {
+
+  .cell{
+    width: 33%;
+  }
+}
+@media (min-width: 1000px) {
+  .cell{
+    width: 25%;
+  }
+}
+
+
+
+
+
+
+/*
+Copyright 2017-2018 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

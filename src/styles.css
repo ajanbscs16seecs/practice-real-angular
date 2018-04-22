@@ -31,9 +31,7 @@
 [class*='col-'] {
 	width: 100%;
   float: left;
-}
-[class*='col-']:last-of-type {
-  padding-right: 0;
+
 }
 
 @media only screen and (min-width: 600px) {
@@ -60,7 +58,7 @@
 	.col-3 {width: 33.33333%;}
 	.col-2 {width: 50%;}
 	.col-for-page {
-		width: 75%;
+		width: 70%;
 
 	}
 	[class*="col-"] {

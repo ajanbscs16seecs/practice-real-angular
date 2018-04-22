@@ -4,32 +4,41 @@
 
   <div class="col-for-sides"></div>
 
-  <div class="col-for-page">
+  <div class="col-for-page padding-responsive">
 
 
-    <div>
+    <div class="row">
 
-      <div id="dp-container">
+
+      <div class="col-dp dp">
         <img id="profile-img" src="{{profileImgUrl}}"/>
 
       </div>
-      <div id="title-options">
-        <div class="title-option" id ="fav-star"><i class="fas fa-user-plus"></i></div>
-        <div class="title-option" id ="fav-star"> 685 <i class="fas fa-plus-square"></i></div>
-        <mat-divider></mat-divider>
-
-      </div>
-
-
-
-      <div class="page-content">
-
+      <div id="col-info info">
 
         <p>{{publicName}}</p>
 
         <a>@{{username}}</a>
 
 
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+      <div class="profile-content">
+
+          <div id="title-options">
+            <div class="title-option" id ="fav-star"><i class="fas fa-user-plus"></i></div>
+            <div class="title-option" id ="fav-star"> 685 <i class="fas fa-plus-square"></i></div>
+            <mat-divider></mat-divider>
+
+          </div>
 
 
           <mat-tab-group>
@@ -42,7 +51,7 @@
             </mat-tab>
             <mat-tab label="Solutions">
 
-              
+
 
             </mat-tab>
           </mat-tab-group>
@@ -54,8 +63,6 @@
 
       </div>
 
-
-    </div>
 
 
 
