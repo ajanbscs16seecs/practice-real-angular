@@ -2,6 +2,55 @@ mat-grid-tile {
   background: lightblue;
 
 }
+
+
 .big-icon {
-    font-size: 32px;
+    font-size: 40px;
+
+}
+.browseContainer{
+ align-self: center;
+ margin: auto;
+  width: 100%;
+}
+.browseHeader{
+ text-align: center;
+  font-size: 40px;
+  align-self: center;
+  padding: 2px;
+   width: 100%;
+   color: #F7F903;
+   background-color:#4394FE;
+   box-sizing: border-box;
+
+}
+@media only screen and (max-width: 650px) {
+	/* For tablets: */
+	.browseHeader {
+		/* change it to 75 when side bar */
+    font-size: 10px;
+		width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding-top: 1px;
+
+	}
+.browseContainer{
+    	width: 100%;
+      font-size: 10px;
+      height: auto;
+      margin: auto;
+  }
+  .big-icon {
+      font-size: 15px;
+
+  }
+  #grid{
+    columns: 2;
+  }
+  mat-grid-list{
+
+    cols:2;
+  }
+
 }
