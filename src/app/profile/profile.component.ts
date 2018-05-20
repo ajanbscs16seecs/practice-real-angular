@@ -4,6 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { Subject }    from 'rxjs/Subject';
 import { of }         from 'rxjs/observable/of';
 
+
+
+import { User } from '../schema/user';
+
+import { UserService } from '../services/user.service';
+
+
 import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
@@ -17,23 +24,43 @@ import {
 export class ProfileComponent implements OnInit {
   // heroes$: Observable<Hero[]>;
 
+  user = null;
+
 
 
   profileImgUrl = 'https://designshack.net/tutorialexamples/profile-layout-content-tabs/images/avatar.png';
 
-  username = 'jan.arifullah';
-  publicName = 'Arifullah Jan';
 
-
-  bio = 'I’m a web developer. I spend my whole day, practically every day, experimenting with HTML, CSS, and JavaScript; dabbling with Python and Ruby; and inhaling a wide variety of potentially useless information through a few hundred RSS feeds. I build websites that delight and inform. I do it well.';
 
   private searchTerms = new Subject<string>();
 
-  constructor() {}
+  constructor(private UserService: UserService) { }
+
 
   ngOnInit(): void {
 
+    this.getUser();
+
+
+
+
   }
+
+
+
+
+  getUser(): void {
+    this.UserService.getUser(1)
+    .subscribe(user => {
+      this.user = user;
+
+
+
+    });
+  }
+
+
+
 }
 
 

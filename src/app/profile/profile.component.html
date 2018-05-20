@@ -18,7 +18,7 @@
 
         <p>{{publicName}}</p>
 
-        <a>@{{username}}</a>
+        <a>@{{user.username}}</a>
 
 
 
@@ -35,7 +35,7 @@
 
           <div id="title-options">
             <div class="title-option" id ="fav-star"><i class="fas fa-user-plus"></i></div>
-            <div class="title-option" id ="fav-star"> 685 <i class="fas fa-plus-square"></i></div>
+            <div class="title-option" id ="fav-star">{{user.points}} <i class="fas fa-plus-square"></i></div>
             <mat-divider></mat-divider>
 
           </div>
@@ -44,7 +44,13 @@
           <mat-tab-group>
             <mat-tab label="About">
 
-              <p>{{bio}}<p>
+              <p>{{user.about}}<p>
+
+
+
+            </mat-tab>
+            <mat-tab label="Assignments">
+
 
 
 
@@ -53,7 +59,9 @@
 
 
 
+
             </mat-tab>
+
           </mat-tab-group>
 
 

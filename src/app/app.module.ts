@@ -29,6 +29,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {SidebarComponent} from './sidebar/sidebar.component';
 
 import { MessageService } from './services/message.service';
+import { UserService } from './services/user.service';
+
+
+
 
 
 import { Hammer }from 'hammerjs';
@@ -154,7 +158,7 @@ export class DemoMaterialModule {}
     AttachmentComponent,
     SidebarComponent
   ],
-  providers: [ MessageService],
+  providers: [ MessageService , UserService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

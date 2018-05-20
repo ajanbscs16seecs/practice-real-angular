@@ -12,21 +12,59 @@
           <mat-card-content>
 
             <mat-tab-group class="sign-tab-group">
+
+
+
+
               <mat-tab label="sign in">
                 <div class="form">
-                  <mat-form-field class="form-element">
-                    <input matInput placeholder="Username/Email">
-                  </mat-form-field>
+                  <div class="inner-form">
+                    <mat-form-field class="form-element">
+                      <input matInput placeholder="Username/Email">
+                    </mat-form-field>
 
-                  <mat-form-field class="form-element">
-                    <input  matInput type="password" placeholder="Password">
-                  </mat-form-field>
+                    <mat-form-field class="form-element">
+                      <input  matInput type="password" placeholder="Password">
+                    </mat-form-field>
 
-                  <button mat-raised-button color="accent">Sign In</button>
+                    <button mat-raised-button color="accent">Sign In</button>
+
+                    <table class="table-signin-providers"><tr>
+                      <td >Sign in with Facebook</td>
+                      <td >Sign in with Google</td>
+                    </tr></table>
+
+
+                  </div>
 
                 </div>
               </mat-tab>
+
+
+
+
+
               <mat-tab label="sign up">
+                <div class="form">
+                  <div class="inner-form">
+                    <mat-form-field class="form-element">
+                      <input matInput placeholder="Username/Email">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-element">
+                      <input  matInput type="password" placeholder="Password">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-element">
+                      <input  matInput type="password" placeholder="Confirm Password">
+                    </mat-form-field>
+
+                    <button mat-raised-button color="accent">Sign Up</button>
+
+                  </div>
+
+
+                </div>
               </mat-tab>
             </mat-tab-group>
           </mat-card-content>
