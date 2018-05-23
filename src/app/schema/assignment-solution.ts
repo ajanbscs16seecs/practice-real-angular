@@ -1,4 +1,4 @@
-export class Assignment {
+export class AssignmentSolution {
    id: number;
    title: string;
    description: string;

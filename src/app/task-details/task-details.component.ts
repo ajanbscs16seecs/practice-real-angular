@@ -21,6 +21,9 @@ export class TaskDetailsComponent implements OnInit {
   // heroes$: Observable<Hero[]>;
 
 
+  assignment: Assignment;
+
+
 
   dpUrl = 'https://designshack.net/tutorialexamples/profile-layout-content-tabs/images/avatar.png';
   taskTitle = 'Dummy Task Dummy Task Dummy Task Dummy Task';

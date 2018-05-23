@@ -78,6 +78,11 @@
 }
 
 
+.centered-horizontal {
+    display: table;
+    margin: 0 auto;
+}
+
 /*
 
 .signin-card {

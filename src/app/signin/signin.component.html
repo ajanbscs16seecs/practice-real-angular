@@ -20,14 +20,15 @@
                 <div class="form">
                   <div class="inner-form">
                     <mat-form-field class="form-element">
-                      <input matInput placeholder="Username/Email">
+                      <input matInput  [(ngModel)]="email"  placeholder="Email" type="email">
                     </mat-form-field>
 
                     <mat-form-field class="form-element">
-                      <input  matInput type="password" placeholder="Password">
+                      <input  matInput type="password" [(ngModel)]="password" placeholder="Password" type="password">
                     </mat-form-field>
 
-                    <button mat-raised-button color="accent">Sign In</button>
+                    <button class="centered-horizontal" mat-raised-button color="accent" (click)="signin()"  *ngIf="!loading">Sign In</button>
+                    <mat-spinner class="centered-horizontal"  diameter="30" *ngIf="loading"></mat-spinner>
 
                     <table class="table-signin-providers"><tr>
                       <td >Sign in with Facebook</td>
@@ -48,18 +49,19 @@
                 <div class="form">
                   <div class="inner-form">
                     <mat-form-field class="form-element">
-                      <input matInput placeholder="Username/Email">
+                      <input matInput [(ngModel)]="email" type="email" placeholder="Username/Email">
                     </mat-form-field>
 
                     <mat-form-field class="form-element">
-                      <input  matInput type="password" placeholder="Password">
+                      <input  matInput [(ngModel)]="password" type="password" placeholder="Password">
                     </mat-form-field>
 
                     <mat-form-field class="form-element">
-                      <input  matInput type="password" placeholder="Confirm Password">
+                      <input  matInput [(ngModel)]="confirmPassword" type="password" placeholder="Confirm Password">
                     </mat-form-field>
 
-                    <button mat-raised-button color="accent">Sign Up</button>
+                    <button  class="centered-horizontal"  mat-raised-button color="accent" *ngIf="!loading">Sign Up</button>
+                    <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
 
                   </div>
 

@@ -27,7 +27,6 @@ export class ProfileComponent implements OnInit {
   user = null;
 
 
-
   profileImgUrl = 'https://designshack.net/tutorialexamples/profile-layout-content-tabs/images/avatar.png';
 
 
@@ -53,6 +52,7 @@ export class ProfileComponent implements OnInit {
     this.UserService.getUser(1)
     .subscribe(user => {
       this.user = user;
+      this.UserService.addUser(user).subscribe(user =>{});
 
 
 

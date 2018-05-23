@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
+import { Response } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import {of} from 'rxjs/add/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { User } from './schema/user';
+import { User } from '../schema/user';
 import { MessageService } from './message.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({
+const headersCons = {
+  headers: new Headers({
      'Content-Type': 'application/json' ,
      'Access-Control-Allow-Origin':'*'
   })
@@ -21,10 +21,63 @@ export class UserService {
   private sampleUserUrl = 'http://localhost/pr/user.php?id=1';  // URL to web api
 
   private usersUrl = 'http://localhost/pr/user.php';  // URL to web api
+  private signinUrl = 'http://localhost/pr/signin.php';  // URL to web api
+  public authToken: string;
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService) {
+        // set token if saved in local storage
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = currentUser && currentUser.token;
+    }
+
+
+
+    login(email: string, password: string): Observable<boolean> {
+        return this.http.post(this.signinUrl, JSON.stringify({email, password}), headersCons.headers).pipe(
+          map((response: Response) => {
+            // login successful if there's a jwt token in the response
+            const authToken = response && response.authToken;
+            if (authToken) {
+                // set token property
+                this.authToken = authToken;
+
+                // store username and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('currentUser', JSON.stringify({ email, authToken }));
+
+                // return true to indicate successful login
+                return true;
+            } else {
+                // return false to indicate failed login
+                return false;
+            }
+          }),
+          catchError(this.handleError<User>(`couldn't login`))
+        );
+    }
+
+    logout(): void {
+        // clear token remove user from local storage to log user out
+        this.authToken = null;
+        localStorage.removeItem('currentUser');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   /** GET heroes from the server */
@@ -65,30 +118,24 @@ export class UserService {
 
   /** POST: add a new hero to the server */
   addUser (user: User): Observable<User> {
-    return this.http.post<User>(this.usersUrl, user, httpOptions).pipe(
+    console.log(user);
+    //
+    return this.http.post<User>(this.usersUrl,JSON.stringify(user) , headersCons.headers).pipe(
       tap((user: User) => this.log(`added user w/ id=${user.id}`)),
       catchError(this.handleError<Hero>('addUser'))
     );
   }
-  //
-  // /** DELETE: delete the hero from the server */
-  // deleteHero (hero: Hero | number): Observable<Hero> {
-  //   const id = typeof hero === 'number' ? hero : hero.id;
-  //   const url = `${this.heroesUrl}/${id}`;
-  //
-  //   return this.http.delete<Hero>(url, httpOptions).pipe(
-  //     tap(_ => this.log(`deleted hero id=${id}`)),
-  //     catchError(this.handleError<Hero>('deleteHero'))
-  //   );
-  // }
-  //
-  // /** PUT: update the hero on the server */
-  // updateHero (hero: Hero): Observable<any> {
-  //   return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
-  //     tap(_ => this.log(`updated hero id=${hero.id}`)),
-  //     catchError(this.handleError<any>('updateHero'))
-  //   );
-  // }
+
+
+  /** PUT: update the hero on the server */
+  updateHero (user: User): Observable<any> {
+    return this.http.put(this.usersUrl, user, httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${user.id}`)),
+      catchError(this.handleError<any>('updateUser'))
+    );
+  }
+
+
 
   /**
    * Handle Http operation that failed.

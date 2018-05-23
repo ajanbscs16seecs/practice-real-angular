@@ -5,8 +5,8 @@ import { Observable} from 'rxjs';
 import {of} from 'rxjs/add/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { User } from './schema/user';
-import { MessageService } from './message.service';
+import { User } from '../schema/user';
+import { MessageService } from '../message.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
