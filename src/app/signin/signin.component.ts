@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
-
-
 import {Router} from '@angular/router';
 
 import { User } from '../schema/user';
 
 import { UserService } from '../services/user.service';
 
+
+import {MatIconRegistry} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-signin',
@@ -19,6 +19,7 @@ export class SigninComponent implements OnInit {
 
   bgUrl='http://backgroundcheckall.com/wp-content/uploads/2017/12/background-images-for-registration-page-10.jpg';
 
+  username:String = '';
   email:String = '';
   password:String = '';
   confirmPassword:String = '';
@@ -26,7 +27,7 @@ export class SigninComponent implements OnInit {
 
   loading:boolean = false;
 
-  constructor(private userService: UserService,private router: Router) { }
+  constructor(private userService: UserService,private router: Router,public snackBar: MatSnackBar) { }
 
   ngOnInit() {
 
@@ -42,7 +43,9 @@ export class SigninComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }
       else{
-
+        this.snackBar.open("Couldn't sigin.", null, {
+          duration: 2000,
+        });
       }
 
 
@@ -51,10 +54,21 @@ export class SigninComponent implements OnInit {
   }
   signup(){
     this.loading = true;
-    this.userService.addUser(this.email,this.password).subscribe(response=>{
-      
+    this.userService.addUser(this.username,this.email,this.password).subscribe(response=>{
+
       this.loading = false;
       console.log(response);
+      if(response){
+        this.router.navigate(['/dashboard']);
+      }
+      else{
+        this.snackBar.open("Couldn't sigup", null, {
+          duration: 2000,
+        });
+      }
+
+
+
     });
 
   }

@@ -21,6 +21,7 @@ export class UserService {
   private sampleUserUrl = 'http://localhost/pr/user.php?id=1';  // URL to web api
 
   private usersUrl = 'http://localhost/pr/user.php';  // URL to web api
+    private newUserUrl = 'http://localhost/pr/user-new.php';  // URL to web api
   private signinUrl = 'http://localhost/pr/signin.php';  // URL to web api
   public authToken: string;
 
@@ -42,9 +43,11 @@ export class UserService {
             if (authToken) {
                 // set token property
                 this.authToken = authToken;
+                let id = response.userId;
+                let username = response.username;
 
                 // store username and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify({ email, authToken }));
+                localStorage.setItem('currentUser', JSON.stringify({id,email,username, authToken }));
 
                 // return true to indicate successful login
                 return true;
@@ -117,12 +120,30 @@ export class UserService {
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
-  addUser (user: User): Observable<User> {
-    console.log(user);
+  addUser (username:String,email:String,password:String): Observable<boolean> {
+
     //
-    return this.http.post<User>(this.usersUrl,JSON.stringify(user) , headersCons.headers).pipe(
-      tap((user: User) => this.log(`added user w/ id=${user.id}`)),
-      catchError(this.handleError<Hero>('addUser'))
+    return this.http.post(this.signinUrl,JSON.stringify({username,email,password}) , headersCons.headers).pipe(
+      map((response: Response) => {
+        // login successful if there's a jwt token in the response
+        const authToken = response && response.authToken;
+        if (authToken) {
+            // set token property
+            this.authToken = authToken;
+            let id = response.userId;
+            let username = response.username;
+
+            // store username and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify({id,email,username, authToken }));
+
+            // return true to indicate successful login
+            return true;
+        } else {
+            // return false to indicate failed login
+            return false;
+        }
+      }),
+      catchError(this.handleError<User>(`couldn't login`))
     );
   }
 

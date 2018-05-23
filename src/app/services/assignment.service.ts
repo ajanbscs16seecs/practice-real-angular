@@ -9,8 +9,8 @@ import { User } from './schema/user';
 import { Assignment } from './schema/assignment';
 import { MessageService } from './message.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({
+const headersCons = {
+  headers: new Headers({
      'Content-Type': 'application/json' ,
      'Access-Control-Allow-Origin':'*'
   })
@@ -19,9 +19,9 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class AssignmentService {
 
-  private sampleAssignmetUrl = 'http://localhost/pr/asssignment.php?id=1';  // URL to web api
+  private sampleAssignmetUrl = 'http://localhost/pr/assignment.php?id=1';  // URL to web api
 
-  private assignmentUrl = 'http://localhost/pr/asssignment.php';  // URL to web api
+  private assignmentUrl = 'http://localhost/pr/assignment.php';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -47,6 +47,17 @@ export class AssignmentService {
     return this.http.get<Assignment>(url).pipe(
       tap(_ => this.log(`fetched assignment id=${id}`)),
       catchError(this.handleError<Assignment>(`getAssignment id=${id}`))
+    );
+  }
+
+
+
+  /** GET hero by id. Will 404 if id not found */
+  getAssignments(): Observable<Assignment[]> {
+    const url = `${this.assignmentUrl}`;
+    return this.http.get<Assignment>(this.assignmentUrl).pipe(
+      tap(_ => this.log(`fetched assignments`)),
+      catchError(this.handleError<Assignment>(`getAssignments`))
     );
   }
   //

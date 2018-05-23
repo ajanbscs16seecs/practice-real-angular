@@ -30,6 +30,7 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 
 import { MessageService } from './services/message.service';
 import { UserService } from './services/user.service';
+import { AssignmentService } from './services/assignment.service';
 
 
 
@@ -158,7 +159,7 @@ export class DemoMaterialModule {}
     AttachmentComponent,
     SidebarComponent
   ],
-  providers: [ MessageService , UserService],
+  providers: [ MessageService , UserService,AssignmentService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -11,7 +11,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PracticeReal.com';
-  username = '@jan.allah';
+
+
+  username = '@jan.all';
+
+
+  loggedIn:boolean = false;
+
+
+  ngOnInit(){
+    let a = localStorage.getItem('currentUser');
+    console.log(a);
+    if(a){
+      a=JSON.parse(a);
+      this.username = a.username;
+      this.loggedIn=true;
+
+    }
+  }
 
 
 }
