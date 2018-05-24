@@ -13,7 +13,7 @@
       <div class="col-dp dp">
         <!-- <img  src="{{profileImgUrl}}"/> -->
 
-        <cl-image id="profile-img" public-id="dp_1.jpg">
+        <cl-image id="profile-img" public-id="{{user.dpImgUrl}}">
           <cl-transformation width="150" height="150" gravity="face" radius="100" effect="sepia" crop="thumb">
           </cl-transformation>
 
@@ -22,9 +22,7 @@
       </div>
       <div id="col-info info">
 
-        <p>{{publicName}}</p>
 
-        <a>@{{user.username}}</a>
 
 
 
@@ -39,6 +37,7 @@
 
       <div class="profile-content">
 
+          <p>@{{user.username}}</p>
           <div id="title-options">
             <div class="title-option" id ="fav-star"><i class="fas fa-user-plus"></i></div>
             <div class="title-option" id ="fav-star">{{user.points}} <i class="fas fa-plus-square"></i></div>
@@ -49,19 +48,26 @@
 
           <mat-tab-group>
             <mat-tab label="About">
-
-              <p>{{user.about}}<p>
-
-
+              <markdown ngPreserveWhitespaces>{{user.about}}</markdown>
 
             </mat-tab>
             <mat-tab label="Assignments">
 
-              <markdown ngPreserveWhitespaces>
-                # Markdown
+              <div class="list-item-wrapper" *ngFor="let task of tasks">
+                <mat-card class="task-card">
+                  <mat-card-header>
+                    <div mat-card-avatar><img src="{{task.dpurl}}" height='100%'/></div>
+                    <mat-card-title>{{task.title}}</mat-card-title>
+                  </mat-card-header>
 
-                ###klsdflksd
-              </markdown>
+                  <mat-card-content>
+                      <markdown ngPreserveWhitespaces>{{task.description}}</markdown>
+                        <a routerLink="/task/{{task.id}}">View details</a>
+                  </mat-card-content>
+                </mat-card>
+
+
+              </div>
 
 
             </mat-tab>

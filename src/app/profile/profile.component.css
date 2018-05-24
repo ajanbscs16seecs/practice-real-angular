@@ -59,7 +59,9 @@
 
 
 
-
+.info{
+  padding: 20px 50px;
+}
 
 .profile-content{
   clear: both;

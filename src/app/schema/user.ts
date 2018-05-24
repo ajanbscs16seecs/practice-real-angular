@@ -6,6 +6,7 @@ export class User {
    score: string;
    jsonData:string;
    about:string;
+   dpImgUrl:string;
    points:string;
  }
 
