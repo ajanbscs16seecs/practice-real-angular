@@ -13,7 +13,8 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { MarkdownModule } from 'ngx-markdown';
 
 
-
+import { CloudinaryModule } from '@cloudinary/angular-5.x';
+import * as  Cloudinary from 'cloudinary-core';
 
 
 
@@ -144,6 +145,8 @@ export class DemoMaterialModule {}
     BrowserAnimationsModule,
     DemoMaterialModule,
     // HighlightModule.forRoot({ theme: 'default' }),
+
+    CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'janmarwat'}),
 
 
 

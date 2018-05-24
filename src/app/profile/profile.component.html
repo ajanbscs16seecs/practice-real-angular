@@ -11,7 +11,13 @@
 
 
       <div class="col-dp dp">
-        <img id="profile-img" src="{{profileImgUrl}}"/>
+        <!-- <img  src="{{profileImgUrl}}"/> -->
+
+        <cl-image id="profile-img" public-id="dp_1.jpg">
+          <cl-transformation width="150" height="150" gravity="face" radius="100" effect="sepia" crop="thumb">
+          </cl-transformation>
+
+        </cl-image>
 
       </div>
       <div id="col-info info">
