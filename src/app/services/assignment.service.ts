@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable} from 'rxjs';
-import {of} from 'rxjs/add/observable/of';
+
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { User } from './schema/user';
@@ -51,7 +51,6 @@ export class AssignmentService {
   }
 
 
-
   /** GET hero by id. Will 404 if id not found */
   getAssignments(): Observable<Assignment[]> {
     const url = `${this.assignmentUrl}`;
@@ -60,6 +59,9 @@ export class AssignmentService {
       catchError(this.handleError<Assignment>(`getAssignments`))
     );
   }
+
+
+
   //
   // /* GET heroes whose name contains search term */
   // searchHeroes(term: string): Observable<Hero[]> {

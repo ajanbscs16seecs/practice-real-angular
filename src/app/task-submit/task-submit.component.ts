@@ -3,9 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 
-import { Observable } from 'rxjs/Observable';
-import { Subject }    from 'rxjs/Subject';
-import { of }         from 'rxjs/observable/of';
+import { Observable ,  Subject ,  of } from 'rxjs';
 
 import {
    debounceTime, distinctUntilChanged, switchMap

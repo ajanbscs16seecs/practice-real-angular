@@ -19,10 +19,10 @@ export class SigninComponent implements OnInit {
 
   bgUrl='http://backgroundcheckall.com/wp-content/uploads/2017/12/background-images-for-registration-page-10.jpg';
 
-  username:String = '';
-  email:String = '';
-  password:String = '';
-  confirmPassword:String = '';
+  username:string = '';
+  email:string = '';
+  password:string = '';
+  confirmPassword:string = '';
 
 
   loading:boolean = false;

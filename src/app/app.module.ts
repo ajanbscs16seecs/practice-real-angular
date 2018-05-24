@@ -10,6 +10,17 @@ import { HttpClientModule }    from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 
 import { HighlightModule } from 'ngx-highlightjs';
+import { MarkdownModule } from 'ngx-markdown';
+
+
+
+
+
+
+
+
+
+
 
 import { AppComponent }         from './app.component';
 import { SigninComponent }   from './signin/signin.component';
@@ -123,6 +134,7 @@ export class DemoMaterialModule {}
 
 @NgModule({
   imports: [
+    MarkdownModule.forRoot(),
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -131,7 +143,7 @@ export class DemoMaterialModule {}
     MatButtonModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
-    HighlightModule.forRoot({ theme: 'default' }),
+    // HighlightModule.forRoot({ theme: 'default' }),
 
 
 
