@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 import { AssignmentService } from '../services/assignment.service';

@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 
+import { AssignmentService } from '../services/assignment.service';
+
+
+
 import { Observable ,  Subject ,  of } from 'rxjs';
 
 import {
@@ -19,7 +23,7 @@ export class TaskDetailsComponent implements OnInit {
   // heroes$: Observable<Hero[]>;
 
 
-  assignment: Assignment;
+  task: Assignment;
 
 
 
@@ -48,15 +52,27 @@ export class TaskDetailsComponent implements OnInit {
 
   private searchTerms = new Subject<string>();
 
-  constructor() {}
+  constructor(private route: ActivatedRoute,
+    private assignmentService: AssignmentService,
+    private location: Location) {}
 
 
 
   ngOnInit(): void {
 
 
+    this.getAssignment();
+
+
 
   }
+
+  getAssignment(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.assignmentService.getAssignment(id)
+      .subscribe(task => this.task = task);
+  }
+
 }
 
 

@@ -8,8 +8,97 @@
 
   <div class="col-for-page padding-responsive">
 
+    <mat-card class="task-card">
+      <mat-card-header>
+        <div mat-card-avatar>
 
-    <div class="title">
+          <cl-image public-id="{{task.dpImgUrl}}">
+            <cl-transformation width="40" height="40" gravity="face" radius="100" effect="sepia" crop="thumb">
+            </cl-transformation>
+
+
+
+          </cl-image>
+
+
+        </div>
+        <mat-card-title>{{task.title}}<br>by <a routerLink="/profile/{{task.uploadedBy}}">{{task.username}}</a></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="content">
+
+
+
+          <div class="title-options">
+            <div class="title-option" id ="fav-star">654 <i class="far fa-star"></i></div>
+            <div class="title-option" id ="fav-star"><i class="far fa-star"></i></div>
+            <div class="title-option" id ="fav-star"><i class="far fa-star"></i></div>
+            <mat-divider></mat-divider>
+
+          </div>
+            <markdown ngPreserveWhitespaces>{{task.description}}</markdown>
+              <a routerLink="/task/{{task.id}}">View details</a>
+
+
+
+
+          <mat-divider></mat-divider>
+          <div class="attachment">
+
+            <mat-grid-list cols="4" rowHeight="100px">
+              <mat-grid-tile
+                  *ngFor="let tile of tiles"
+                  [colspan]="tile.cols"
+                  [rowspan]="tile.rows"
+                  [style.background]="tile.color">
+                {{tile.text}}
+              </mat-grid-tile>
+            </mat-grid-list>
+
+
+          </div>
+
+
+          <mat-tab-group>
+            <mat-tab label="Discussions">
+
+              <div *ngFor="let comment of dicussions">
+                {{comment.text}}
+                <mat-divider></mat-divider>
+
+              </div>
+
+
+
+            </mat-tab>
+            <mat-tab label="Submissions">
+              <h3>Some more tab content</h3>
+              <p>...</p>
+
+
+
+
+            </mat-tab>
+          </mat-tab-group>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+      </mat-card-content>
+    </mat-card>
+
+
+
+
+    <!-- <div class="title">
       <img class="dp" src="{{dpUrl}}"/>
 
       <div class="title-details">
@@ -17,80 +106,7 @@
         <div class="task-subtitle">Dummy Task</div>
 
 
-      </div>
-
-
-      <div class="title-options">
-        <div class="title-option" id ="fav-star">654 <i class="far fa-star"></i></div>
-        <div class="title-option" id ="fav-star"><i class="far fa-star"></i></div>
-        <div class="title-option" id ="fav-star"><i class="far fa-star"></i></div>
-        <mat-divider></mat-divider>
-
-      </div>
-
-
-    </div>
-
-
-
-
-    <div class="content">
-
-
-
-
-      <p>
-        Copyright 2017-2018 Google Inc. All Rights Reserved.
-        Use of this source code is governed by an MIT-style license that
-        can be found in the LICENSE file at http://angular.io/licenseCopyright 2017-2018 Google Inc. All Rights Reserved.
-        Use of this source code is governed by an MIT-style license that
-        can be found in the LICENSE file at http://angular.io/licenseCopyright 2017-2018 Google Inc. All Rights Reserved.
-        Use of this source code is governed by an MIT-style license that
-        can be found in the LICENSE file at http://angular.io/licenseCopyright 2017-2018 Google Inc. All Rights Reserved.
-        Use of this source code is governed by an MIT-style license that
-        can be found in the LICENSE file at http://angular.io/license
-      </p>
-
-
-
-      <mat-divider></mat-divider>
-      <div class="attachment">
-
-        <mat-grid-list cols="4" rowHeight="100px">
-          <mat-grid-tile
-              *ngFor="let tile of tiles"
-              [colspan]="tile.cols"
-              [rowspan]="tile.rows"
-              [style.background]="tile.color">
-            {{tile.text}}
-          </mat-grid-tile>
-        </mat-grid-list>
-
-
-      </div>
-
-
-      <mat-tab-group>
-        <mat-tab label="Discussions">
-
-          <div *ngFor="let comment of dicussions">
-            {{comment.text}}
-            <mat-divider></mat-divider>
-
-          </div>
-
-
-
-        </mat-tab>
-        <mat-tab label="Submissions">
-          <h3>Some more tab content</h3>
-          <p>...</p>
-
-
-
-
-        </mat-tab>
-      </mat-tab-group>
+      </div> -->
 
 
 
@@ -99,7 +115,8 @@
 
 
 
-    </div>
+
+
 
 
 

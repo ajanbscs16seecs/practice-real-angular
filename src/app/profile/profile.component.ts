@@ -6,6 +6,7 @@ import { MarkdownModule } from 'ngx-markdown';
 
 import { User } from '../schema/user';
 
+import { AssignmentService } from '../services/assignment.service';
 import { UserService } from '../services/user.service';
 
 
@@ -37,6 +38,8 @@ export class ProfileComponent implements OnInit {
   private searchTerms = new Subject<string>();
 
   constructor(private UserService: UserService,private assignmentService: AssignmentService) { }
+
+
 
 
   ngOnInit(): void {
