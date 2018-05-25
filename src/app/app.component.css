@@ -175,7 +175,7 @@ nav a.active {
 
 
 .footer-distributed{
-	background-color: #000;
+	background-color: #889190;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
@@ -208,7 +208,7 @@ nav a.active {
 }
 
 .footer-distributed h3 span{
-	color:  #5383d3;
+	color:  #47f7df;
 }
 
 /* Footer links */
@@ -272,7 +272,7 @@ nav a.active {
 }
 
 .footer-distributed .footer-center p a{
-	color:  #5383d3;
+	color:  #47f7df;
 	text-decoration: none;;
 }
 

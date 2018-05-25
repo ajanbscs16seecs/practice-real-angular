@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'browse', component: BrowseComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'profile', component:  ProfileComponent},
+  { path: 'profile/:id', component:  ProfileComponent},
   { path: 'task/:id', component:  TaskDetailsComponent},
   { path: 'attachment/:id', component:  AttachmentComponent},
   { path: 'task-new', component:  TaskAddComponent},

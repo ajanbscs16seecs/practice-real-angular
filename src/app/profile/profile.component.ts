@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Observable ,  Subject ,  of } from 'rxjs';
 
 import { MarkdownModule } from 'ngx-markdown';
@@ -37,7 +38,9 @@ export class ProfileComponent implements OnInit {
 
   private searchTerms = new Subject<string>();
 
-  constructor(private UserService: UserService,private assignmentService: AssignmentService) { }
+  constructor(private UserService: UserService,private assignmentService: AssignmentService,private route: ActivatedRoute,
+    private location: Location) { }
+
 
 
 
@@ -58,10 +61,13 @@ export class ProfileComponent implements OnInit {
 
 
   getUser(): void {
-    this.UserService.getUser(1)
+    this.loading=true;
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.UserService.getUser(id)
     .subscribe(user => {
       this.user = user;
-      this.UserService.addUser(user).subscribe(user =>{});
+      this.loading = false;
+
 
 
 

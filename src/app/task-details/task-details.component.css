@@ -66,8 +66,48 @@
 }
 
 
-
 .content{
+  min-height: 600px;
   clear: both;
   padding: 10px 0px;
+}
+
+
+
+.discussions {
+  height: 600%;
+}
+
+
+.comment{
+  padding: 10px;
+
+}
+.comment-dp{
+
+  float: left;
+}
+
+.comment-username{
+  vertical-align: middle;
+  padding-left: 10px;
+  float: left;
+}
+
+.comment-body{
+  padding-left: 50px;
+}
+
+
+
+
+
+.new-comment{
+  width: 100%;
+
+}
+
+.new-comment *{
+  width: 100%;
+
 }

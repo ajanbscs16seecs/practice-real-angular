@@ -15,10 +15,7 @@ import { MarkdownModule } from 'ngx-markdown';
 
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import * as  Cloudinary from 'cloudinary-core';
-
-
-
-
+import { CovalentTextEditorModule } from '@covalent/text-editor';
 
 
 
@@ -37,6 +34,8 @@ import { SupportComponent }  from './support/support.component';
 import { AttachmentComponent }  from './attachment/attachment.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
+
+
 
 import {SidebarComponent} from './sidebar/sidebar.component';
 
@@ -148,6 +147,8 @@ export class DemoMaterialModule {}
 
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'janmarwat'}),
 
+    CovalentTextEditorModule,
+
 
 
 
@@ -172,7 +173,9 @@ export class DemoMaterialModule {}
     AboutComponent,
     SupportComponent,
     AttachmentComponent,
-    SidebarComponent
+    SidebarComponent,
+
+
   ],
   providers: [ MessageService , UserService,AssignmentService],
   bootstrap: [ AppComponent ]

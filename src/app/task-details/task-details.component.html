@@ -29,6 +29,7 @@
 
 
 
+
           <div class="title-options">
             <div class="title-option" id ="fav-star">654 <i class="far fa-star"></i></div>
             <div class="title-option" id ="fav-star"><i class="far fa-star"></i></div>
@@ -36,37 +37,58 @@
             <mat-divider></mat-divider>
 
           </div>
-            <markdown ngPreserveWhitespaces>{{task.description}}</markdown>
-              <a routerLink="/task/{{task.id}}">View details</a>
+
+
+
+          <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
+
+          <markdown ngPreserveWhitespaces>{{task.description}}</markdown>
 
 
 
 
           <mat-divider></mat-divider>
-          <div class="attachment">
+          <!-- <div class="attachment">
 
-            <mat-grid-list cols="4" rowHeight="100px">
-              <mat-grid-tile
-                  *ngFor="let tile of tiles"
-                  [colspan]="tile.cols"
-                  [rowspan]="tile.rows"
-                  [style.background]="tile.color">
-                {{tile.text}}
-              </mat-grid-tile>
-            </mat-grid-list>
 
 
           </div>
-
+ -->
 
           <mat-tab-group>
             <mat-tab label="Discussions">
 
-              <div *ngFor="let comment of dicussions">
-                {{comment.text}}
-                <mat-divider></mat-divider>
+              <!-- <div class="discussions" > -->
+                <div class="new-comment" *ngIf="loggedIn">
 
-              </div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Write Comment</mat-label>
+                      <textarea matInput [(ngModel)]="newcomment" placeholder="Write some about the task..."></textarea>
+                      <mat-hint>New comment</mat-hint>
+                    </mat-form-field>
+                  	<button class="centered-horizontal" mat-raised-button color="accent" *ngIf="!loading" (click)="addComment()" >Submit</button>
+                    <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
+                  </div>
+
+                <div *ngFor="let comment of dicussions">
+                  <div class="comment" >
+                    <cl-image class="comment-dp" public-id="{{comment.dpImgUrl}}">
+                      <cl-transformation width="40" height="40" gravity="face" radius="100" effect="sepia" crop="thumb">
+                      </cl-transformation>
+                    </cl-image>
+                    <a class="comment-username" routerLink="/profile/{{comment.userId}}">{{task.username}}</a>
+                    <br>
+                    <div class="comment-body">
+                      {{comment.text}}
+                    </div>
+
+
+                    <mat-divider></mat-divider>
+                  </div>
+                </div>
+
+
+              <!-- </div> -->
 
 
 

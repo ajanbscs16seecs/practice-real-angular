@@ -11,27 +11,26 @@
 
         <h2>Post a task.</h2>
 
-
           <mat-form-field>
-            <input matInput placeholder="Title">
+            <input matInput  [(ngModel)]="title"  placeholder="Title">
           </mat-form-field>
 
-          <mat-form-field>
-            <textarea matInput placeholder="Description"></textarea>
-          </mat-form-field>
 
+
+
+<!--
           <mat-form-field>
             <mat-select placeholder="Select">
               <mat-option value="option">Option</mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
 
 
           <mat-form-field class="demo-chip-list">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
                        [removable]="removable" (remove)="remove(tag)">
-                {{tag.name}}
+                {{tag}}
               <mat-icon matChipRemove *ngIf="removable"><i class="far fa-times-circle"></i></mat-icon>
               </mat-chip>
               <input placeholder="Tags"
@@ -42,6 +41,7 @@
             </mat-chip-list>
           </mat-form-field>
 
+          <td-text-editor id="editor" [(ngModel)]="description"  [options]="simplemdeoptions"></td-text-editor>
 
 
           <!-- <div id="upload-attachment" class="dropzone">
@@ -50,21 +50,21 @@
          </div>
           </div> -->
 
-
+<!--
           <form action="/file-upload" class="dropzone">
             <div class="fallback">
               <input name="file" type="file" multiple />
             </div>
-          </form>
+          </form> -->
 
 
 
 
-          <div class="button-row">
-            <button mat-raised-button color="accent">Submit</button>
-          </div>
 
-
+            <div class="button-row">
+            	<button class="centered-horizontal" mat-raised-button color="accent" *ngIf="!loading" (click)="addAssignment()" >Submit</button>
+              <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
+            </div>
 
 
 

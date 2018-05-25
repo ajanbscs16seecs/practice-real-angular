@@ -13,7 +13,8 @@ export class AppComponent {
   title = 'PracticeReal.com';
 
 
-  username = '@jan.all';
+  username = '';
+  userId :number;
 
 
   loggedIn:boolean = false;
@@ -25,6 +26,7 @@ export class AppComponent {
     if(a){
       a=JSON.parse(a);
       this.username = a.username;
+      this.userId = a.userId;
       this.loggedIn=true;
 
     }

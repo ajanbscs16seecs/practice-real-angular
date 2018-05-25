@@ -24,6 +24,7 @@ export class TaskDetailsComponent implements OnInit {
 
 
   task: Assignment;
+  loading:boolean = true;
 
 
 
@@ -32,12 +33,6 @@ export class TaskDetailsComponent implements OnInit {
   username = 'jan.arifullah';
   publicName = 'Arifullah Jan';
 
-  tiles = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
 
 
   dicussions = [
@@ -49,6 +44,7 @@ export class TaskDetailsComponent implements OnInit {
 
   ];
 
+  newcomment:string;
 
   private searchTerms = new Subject<string>();
 
@@ -60,18 +56,73 @@ export class TaskDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.loading = true;
 
     this.getAssignment();
+    this.getComments();
+
+    let a = localStorage.getItem('currentUser');
+    console.log(a);
+    if(a){
+      a=JSON.parse(a);
+      this.username = a.username;
+      this.userId = a.userId;
+      this.loggedIn=true;
+      this.authToken = a.authToken;
+
+    }
+
 
 
 
   }
 
   getAssignment(): void {
+    this.loading=true;
     const id = +this.route.snapshot.paramMap.get('id');
     this.assignmentService.getAssignment(id)
-      .subscribe(task => this.task = task);
+      .subscribe(task => {
+        this.task = task;
+        this.loading = false;
+      });
   }
+
+
+  getComments(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.assignmentService.getAssignmentComments(id)
+      .subscribe(comments => this.dicussions = comments);
+  }
+
+
+
+  addComment(): void{
+    this.loading=true;
+    let assignmentId = this.task.id;
+    console.log(assignmentId);
+    this.assignmentService.addAssignmentComment(this.newcomment,assignmentId,this.authToken).subscribe(response=>{
+
+      this.loading = false;
+      console.log(response);
+
+      if(response.id==0){
+        this.snackBar.open("Couldn't post the comment", null, {
+          duration: 2000,
+        });
+      }
+      else{
+        this.newcomment='';
+        this.discussions.push(response);
+
+      }
+
+
+
+
+    });
+  }
+
+
 
 }
 
