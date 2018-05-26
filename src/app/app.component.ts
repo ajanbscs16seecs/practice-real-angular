@@ -15,6 +15,7 @@ export class AppComponent {
 
   username = '';
   userId :number;
+  profileUrl:String;
 
 
   loggedIn:boolean = false;
