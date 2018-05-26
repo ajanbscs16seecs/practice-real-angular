@@ -46,6 +46,8 @@ export class TaskDetailsComponent implements OnInit {
 
   newcomment:string;
 
+
+  tags = ["computers","app-developement"];
   private searchTerms = new Subject<string>();
 
   constructor(private route: ActivatedRoute,
@@ -112,7 +114,8 @@ export class TaskDetailsComponent implements OnInit {
       }
       else{
         this.newcomment='';
-        this.discussions.push(response);
+        this.getComments();
+
 
       }
 

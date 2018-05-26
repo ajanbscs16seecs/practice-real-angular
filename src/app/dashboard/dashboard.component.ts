@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+
 import { MarkdownModule } from 'ngx-markdown';
 
 
@@ -27,14 +31,27 @@ export class DashboardComponent implements OnInit {
   pageSizeOptions = [5, 10, 25, 100];
 
 
-  constructor(private assignmentService: AssignmentService) { }
+  constructor(private route: ActivatedRoute,
+    private assignmentService: AssignmentService,
+    private location: Location) {}
+
 
   ngOnInit() {
-    this.assignmentService.getAssignments().subscribe(assignments=>{
-      this.tasks = assignments;
-    });
+
+
+
+    this.loading=true;
+    let tag = this.route.snapshot.paramMap.get('tag');
+
+    this.assignmentService.getAssignments(this.route.snapshot.paramMap.get('tag'))
+      .subscribe(tasks => {
+        this.tasks = tasks;
+        this.loading = false;
+      });
 
   }
+
+
 
 
 }

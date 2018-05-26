@@ -20,8 +20,9 @@ import { AboutComponent }  from './about/about.component';
 import { SupportComponent }  from './support/support.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/explore', pathMatch: 'full' },
+  { path: 'explore', component: DashboardComponent },
+  { path: 'explore/:tag', component: DashboardComponent },
   { path: 'browse', component: BrowseComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },

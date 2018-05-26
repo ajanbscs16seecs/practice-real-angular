@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
 
     this.getUser();
-    this.assignmentService.getAssignments().subscribe(assignments=>{
+    this.assignmentService.getAssignments(+this.route.snapshot.paramMap.get('id')).subscribe(assignments=>{
       this.tasks = assignments;
     });
 

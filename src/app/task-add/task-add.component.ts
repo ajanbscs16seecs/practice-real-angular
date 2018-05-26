@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
 import {Router} from '@angular/router';
 
 
 import { Observable ,  Subject ,  of } from 'rxjs';
+
+import {map, startWith} from 'rxjs/operators';
 
 import {
    debounceTime, distinctUntilChanged, switchMap
@@ -14,6 +15,10 @@ import {
 
 import {MatChipInputEvent} from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
+
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
 
 
 
@@ -42,18 +47,47 @@ export class TaskAddComponent implements OnInit {
 
 
 
-  visible: boolean = true;
+visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
-  addOnBlur: boolean = true;
-  // Enter, comma
-  separatorKeysCodes = [ENTER, COMMA];
-  tags = ['Technical Writing' ,'Buisness' ,'Project Proposal'];
-  add(event: MatChipInputEvent): void {
-    let input = event.input;
-    let value = event.value;
+  addOnBlur: boolean = false;
 
-    // Add our fruit
+  separatorKeysCodes = [ENTER, COMMA];
+
+  tagCtrl = new FormControl();
+
+  filteredTags: Observable<any[]>;
+
+  tags = [
+  ];
+
+  allTags = [
+    'computers',
+    'writing',
+    'accounting',
+    'angular',
+    'android-developement',
+    'ios-developement0',
+    'maths',
+    'physics',
+    'digital-logic-design',
+    'health',
+    'medical-sciences'
+  ];
+
+  @ViewChild('tagInput') tagInput: ElementRef;
+
+  constructor(private assignmentService: AssignmentService) {
+    this.filteredTags = this.tagCtrl.valueChanges.pipe(
+        startWith(null),
+        map((tag: string | null) => tag ? this.filter(tag) : this.allTags.slice()));
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our tag
     if ((value || '').trim()) {
       this.tags.push(value.trim());
     }
@@ -62,13 +96,27 @@ export class TaskAddComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+
+    this.tagCtrl.setValue(null);
   }
+
   remove(tag: any): void {
-    let index = this.tags.indexOf(tag);
+    const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
       this.tags.splice(index, 1);
     }
+  }
+
+  filter(name: string) {
+    return this.allTags.filter(tag =>
+        tag.toLowerCase().indexOf(name.toLowerCase()) === 0);
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.tags.push(event.option.viewValue);
+    this.tagInput.nativeElement.value = '';
+    this.tagCtrl.setValue(null);
   }
 
 

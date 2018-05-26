@@ -11,14 +11,15 @@
       <div class="col-for-sides"></div>
       <div class="col-for-page">
         <div id="search-field">
-          <mat-form-field>
-            <input matInput placeholder="Search">
-
+          <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput [(ngModel)]="searchtag" placeholder="Search tag">
+            <!-- <mat-icon matSuffix><i class="fas fa-search"></i></mat-icon> -->
+            <!-- <mat-hint>Search</mat-hint> -->
           </mat-form-field>
-
+            <!-- <div id="search-button"><i class="fas fa-search"></i></div> -->
         </div>
 
-        <div id="search-button"><i class="fas fa-search"></i></div>
       </div>
       <div class="col-for-sides"></div>
 
@@ -31,19 +32,19 @@
 
 
       <div class="cell">
-        <a><span class="icon"><i class="fas fa-video big-icon"></i></span><span><br>Videos & Animations</span></a>
+        <a  routerLink="/explore/videos"><span class="icon"><i class="fas fa-video big-icon"></i></span><span><br>Videos & Animations</span></a>
       </div>
       <div class="cell">
-        <a><span class="icon"><i class="fas fa-pen-square"></i></span><span><br>Writing</span></a>
+        <a routerLink="/explore/writing"><span class="icon"><i class="fas fa-pen-square"></i></span><span><br>Writing</span></a>
       </div>
       <div class="cell">
-        <a><span class="icon"><i class="fas fa-chart-line"></i></span><span><br>Buisness</span></a>
+        <a routerLink="/explore/buisness"><span class="icon"><i class="fas fa-chart-line"></i></span><span><br>Buisness</span></a>
       </div>
       <div class="cell">
-        <a><span class="icon"><i class="fas fa-desktop"></i></span><span><br>Computers</span></a>
+        <a routerLink="/explore/computers"><span class="icon"><i class="fas fa-desktop"></i></span><span><br>Computers</span></a>
       </div>
       <div class="cell">
-        <a><span class="icon"><i class="fab fa-angular"></i></span><span><br>Angular</span></a>
+        <a routerLink="/explore/angular"><span class="icon"><i class="fab fa-angular"></i></span><span><br>Angular</span></a>
       </div>
 
 

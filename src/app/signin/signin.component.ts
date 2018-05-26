@@ -40,7 +40,7 @@ export class SigninComponent implements OnInit {
       console.log("done");
       this.loading = false;
       if(response){
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/explore']);
       }
       else{
         this.snackBar.open("Couldn't sigin.", null, {
@@ -59,7 +59,7 @@ export class SigninComponent implements OnInit {
       this.loading = false;
       console.log(response);
       if(response){
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/profile/'+response.id]);
       }
       else{
         this.snackBar.open("Couldn't sigup", null, {

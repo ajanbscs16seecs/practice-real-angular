@@ -10,10 +10,25 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
 
+  loggedIn = false;
+  notloggedIn:boolean = true;
+  userId:number;
+  username = '';
+
+
   constructor() { }
 
   ngOnInit() {
+    let user = localStorage.getItem('currentUser');
+    console.log(user);
+    if(user){
+      user=JSON.parse(user);
+      this.username = user.username;
+      this.userId = user.userId;
+      this.loggedIn=true;
+      this.notloggedIn = false;
 
+    }
   }
 
 
