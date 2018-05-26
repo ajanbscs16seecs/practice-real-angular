@@ -36,6 +36,8 @@ export class AssignmentService {
     }
 
 
+
+
   /** GET heroes from the server */
   getAssignment (): Observable<Assignment> {
     return this.http.get<Assignment>(this.sampleAssignmetUrl)
@@ -60,9 +62,14 @@ export class AssignmentService {
 
 
   /** GET hero by id. Will 404 if id not found */
-  getAssignments(): Observable<Assignment[]> {
-    const url = `${this.assignmentUrl}`;
-    return this.http.get<Assignment>(this.assignmentUrl).pipe(
+  getAssignments(tag:string): Observable<Assignment[]> {
+    if(tag==null){
+      const url = `${this.assignmentUrl}`;
+    }
+    else{
+      const url = `${this.assignmentUrl}?tag=${tag}`;
+    }
+    return this.http.get<Assignment>(url).pipe(
       tap(_ => this.log(`fetched assignments`)),
       catchError(this.handleError<Assignment>(`getAssignments`))
     );

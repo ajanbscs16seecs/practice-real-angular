@@ -16,9 +16,10 @@ export class AppComponent {
   username = '';
   userId :number;
   profileUrl:String;
+  loggedIn:boolean=false;
+  notloggedIn:boolean = true;
 
 
-  loggedIn:boolean = false;
 
 
   ngOnInit(){
@@ -29,8 +30,31 @@ export class AppComponent {
       this.username = a.username;
       this.userId = a.userId;
       this.loggedIn=true;
+      this.notloggedIn=false;
 
     }
+    console.log(this.userId);
+  }
+
+  refresh(){
+    let a = localStorage.getItem('currentUser');
+    console.log(a);
+    if(a){
+      a=JSON.parse(a);
+      this.username = a.username;
+      this.userId = a.userId;
+      this.loggedIn=true;
+      this.notloggedIn=false;
+
+    }
+  }
+
+  logout(){
+    localStorage.clear();
+    this.userId=0;
+    this.loggedIn=false;
+    this.notloggedIn=true;
+    this.username='';
   }
 
 

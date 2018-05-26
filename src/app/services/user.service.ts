@@ -43,11 +43,11 @@ export class UserService {
             if (authToken) {
                 // set token property
                 this.authToken = authToken;
-                let id = response.userId;
+                let userId = response.userId;
                 let username = response.username;
 
                 // store username and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify({id,email,username, authToken }));
+                localStorage.setItem('currentUser', JSON.stringify({userId,email,username, authToken }));
 
                 // return true to indicate successful login
                 return true;
@@ -130,11 +130,11 @@ export class UserService {
         if (authToken) {
             // set token property
             this.authToken = authToken;
-            let id = response.userId;
+            let userId = response.userId;
             let username = response.username;
 
             // store username and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify({id,email,username, authToken }));
+            localStorage.setItem('currentUser', JSON.stringify({userId,email,username, authToken }));
 
             // return true to indicate successful login
             return true;

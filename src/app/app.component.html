@@ -31,9 +31,9 @@
 	<mat-sidenav-container class="nav-container">
 		<mat-sidenav #snav>
 			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3lOZW7l5eIEpprFJzpwxn60-nIdr91J33udWAxU300a-7Puyu">
-			<button mat-button routerLink="/dashboard">Dashboard</button>
-			<button mat-button routerLink="/profile">Profile</button>
-			<button mat-button routerLink="/task/5">Smaple Task</button>
+			<button mat-button routerLink="/explore">Explore Tasks</button>
+			<a  routerLink="/profile/{{userId}}" *ngIf="loggedIn">Profile</a>
+			<a routerLink="/signin" *ngIf="notloggedIn">Sign In</a>
 			<button mat-button routerLink="/about">About Us</button>
 			<button mat-button routerLink="/support">Contact/Support</button>
 		</mat-sidenav>
@@ -47,17 +47,27 @@
 
 
 			<div class="header">
-				<div class="header-outer">
+				<div class="header-outer" (mouseenter) ="refresh()">
 					<div class="header-left">
 						<a id="menu-icon"  mat-button (click)="snav.toggle()"><i class="fas fa-bars"></i></a>
-						<a  routerLink="/dashboard">{{title}}</a>
+						<a  routerLink="/explore">{{title}}</a>
 					</div>
 					<div class="header-right">
 						<a routerLink="/browse">Find Tasks</a>
-						<a routerLink="/task-new">Post Something</a>
-						<a routerLink="/signin" *ngIf="!loggedIn">Sign In</a>
-						<a routerLink="/profile/{{userId}}">{{username}}</a>
-						<a routerLink="/profile"><i class="fas fa-user"></i></a>
+						<a routerLink="/task-new">Post a task</a>
+						<a routerLink="/signin" *ngIf="notloggedIn">Sign In</a>
+
+
+						<a routerLink="/profile/{{userId}}" *ngIf="loggedIn">{{username}}</a>
+
+
+						<button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="loggedIn" >
+						  <mat-icon>account_circle</mat-icon>
+						</button>
+						<mat-menu #menu="matMenu" >
+						  <button mat-menu-item (click) = "logout()" >Logout</button>
+						</mat-menu>
+
 
 					</div>
 				</div>

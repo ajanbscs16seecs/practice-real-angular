@@ -27,7 +27,9 @@
       <mat-card-content>
         <div class="content">
 
-
+          <mat-chip-list class="mat-chip-list"  aria-orientation="horizontal" *ngFor="let tag of tags">
+            <mat-chip color="primary" selected="true">{{tag}}</mat-chip>
+          </mat-chip-list>
 
 
           <div class="title-options">
@@ -76,7 +78,7 @@
                       <cl-transformation width="40" height="40" gravity="face" radius="100" effect="sepia" crop="thumb">
                       </cl-transformation>
                     </cl-image>
-                    <a class="comment-username" routerLink="/profile/{{comment.userId}}">{{task.username}}</a>
+                    <a class="comment-username" routerLink="/profile/{{comment.userId}}">{{comment.username}}</a>
                     <br>
                     <div class="comment-body">
                       {{comment.text}}
@@ -153,8 +155,7 @@
 
 
   </div>
-
-  <div class="col-for-sides"></div>
+  <app-sidebar class="col-for-sides"></app-sidebar>
 
 
 </div>

@@ -13,6 +13,7 @@
 #search-button{
   float: left;
   width: auto;
+  vertical-align: middle;
 }
 #search-button::after{
   clear: both;

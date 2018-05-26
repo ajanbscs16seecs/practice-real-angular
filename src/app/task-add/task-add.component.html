@@ -25,21 +25,35 @@
             </mat-select>
           </mat-form-field> -->
 
-
-          <mat-form-field class="demo-chip-list">
-            <mat-chip-list #chipList>
-              <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
-                       [removable]="removable" (remove)="remove(tag)">
-                {{tag}}
-              <mat-icon matChipRemove *ngIf="removable"><i class="far fa-times-circle"></i></mat-icon>
-              </mat-chip>
-              <input placeholder="Tags"
-                     [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="add($event)" />
-            </mat-chip-list>
-          </mat-form-field>
+          <form>
+            <mat-form-field class="demo-chip-list">
+              <mat-chip-list #chipList>
+                  <mat-chip
+                  *ngFor="let tag of tags"
+                  [selectable]="selectable"
+                  [removable]="removable"
+                  (removed)="remove(tag)">
+                  {{tag}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input
+                  placeholder="Tags..."
+                  #tagInput
+                  [formControl]="tagCtrl"
+                  [matAutocomplete]="auto"
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="add($event)"
+                />
+              </mat-chip-list>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                  {{ tag }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
 
           <td-text-editor id="editor" [(ngModel)]="description"  [options]="simplemdeoptions"></td-text-editor>
 
@@ -81,8 +95,7 @@
 
 
   </div>
-
-  <div class="col-for-sides"></div>
+  <app-sidebar class="col-for-sides"></app-sidebar>
 
 
 

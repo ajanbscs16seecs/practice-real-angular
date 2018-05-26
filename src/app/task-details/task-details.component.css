@@ -65,6 +65,9 @@
   float: left; /* Float the buttons side by side */
 }
 
+/* .mat-chip-list{
+  width: 100%;
+} */
 
 .content{
   min-height: 600px;
