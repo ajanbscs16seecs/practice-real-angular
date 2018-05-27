@@ -31,12 +31,12 @@ const headersCons = {
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-  private sampleUserUrl = 'http://localhost/pr/user.php?id=1';  // URL to web api
+  private sampleUserUrl = 'http://practicereal.arifullahjan.com/pr/user.php?id=1';  // URL to web api
 
-  private dpUrl = 'http://localhost/pr/dp.php';  // URL to web api
-    private usersUrl = 'http://localhost/pr/user.php';  // URL to web api
-    private newUserUrl = 'http://localhost/pr/user-new.php';  // URL to web api
-  private signinUrl = 'http://localhost/pr/signin.php';  // URL to web api
+  private dpUrl = 'http://practicereal.arifullahjan.com/pr/dp.php';  // URL to web api
+    private usersUrl = 'http://practicereal.arifullahjan.com/pr/user.php';  // URL to web api
+    private newUserUrl = 'http://practicereal.arifullahjan.com/pr/user-new.php';  // URL to web api
+  private signinUrl = 'http://practicereal.arifullahjan.com/pr/signin.php';  // URL to web api
   public authToken: string;
 
   constructor(

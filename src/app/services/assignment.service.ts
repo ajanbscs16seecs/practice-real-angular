@@ -21,15 +21,17 @@ import { MessageService } from './message.service';
 @Injectable({ providedIn: 'root' })
 export class AssignmentService {
 
-  private sampleAssignmetUrl:any = 'http://localhost/pr/assignment.php?id=1';  // URL to web api
 
-  private assignmentUrl:any = 'http://localhost/pr/assignment.php';  // URL to web api
-  private newAssignmentUrl:any = 'http://localhost/pr/assignment-new.php';  // URL to web api
-  private solutionUrl:any = 'http://localhost/pr/assignment-solution.php';  // URL to web api
-  private newSolutionUrl:any = 'http://localhost/pr/assignment-solution-new.php';  // URL to web api
-  private commentUrl:any = 'http://localhost/pr/comment.php';  // URL to web api
-  private newCommentUrl:any = 'http://localhost/pr/comment-new.php';  // URL to web api
-  private countUrl:any = 'http://localhost/pr/count.php';  // URL to web api
+
+  private sampleAssignmetUrl:any = 'http://practicereal.arifullahjan.com/pr/assignment.php?id=1';  // URL to web api
+
+  private assignmentUrl:any = 'http://practicereal.arifullahjan.com/pr/assignment.php';  // URL to web api
+  private newAssignmentUrl:any = 'http://practicereal.arifullahjan.com/pr/assignment-new.php';  // URL to web api
+  private solutionUrl:any = 'http://practicereal.arifullahjan.com/pr/assignment-solution.php';  // URL to web api
+  private newSolutionUrl:any = 'http://practicereal.arifullahjan.com/pr/assignment-solution-new.php';  // URL to web api
+  private commentUrl:any = 'http://practicereal.arifullahjan.com/pr/comment.php';  // URL to web api
+  private newCommentUrl:any = 'http://practicereal.arifullahjan.com/pr/comment-new.php';  // URL to web api
+  private countUrl:any = 'http://practicereal.arifullahjan.com/pr/count.php';  // URL to web api
   private accessToken:any = '';
 
   constructor(
