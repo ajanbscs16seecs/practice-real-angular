@@ -32,8 +32,8 @@
 		<mat-sidenav #snav>
 			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3lOZW7l5eIEpprFJzpwxn60-nIdr91J33udWAxU300a-7Puyu">
 			<button mat-button routerLink="/explore">Explore Tasks</button>
-			<a  routerLink="/profile/{{userId}}" *ngIf="loggedIn">Profile</a>
-			<a routerLink="/signin" *ngIf="notloggedIn">Sign In</a>
+			<button  routerLink="/profile/{{userId}}" *ngIf="loggedIn">Profile</button>
+			<button routerLink="/signin" *ngIf="notloggedIn">Sign In</button>
 			<button mat-button routerLink="/about">About Us</button>
 			<button mat-button routerLink="/support">Contact/Support</button>
 		</mat-sidenav>
@@ -84,7 +84,7 @@
 				<router-outlet></router-outlet>
 
 
-				<app-messages></app-messages>
+				<!-- <app-messages></app-messages> -->
 
 
 
