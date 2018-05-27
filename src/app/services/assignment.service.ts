@@ -5,28 +5,32 @@ import { Observable} from 'rxjs';
 
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { User } from './schema/user';
-import { Comment } from './schema/comment';
-import { Assignment } from './schema/assignment';
+import { User } from '../schema/user';
+import { Comment } from '../schema/comment';
+import { Assignment } from '../schema/assignment';
+import { AssignmentSolution } from '../schema/assignment-solution';
 import { MessageService } from './message.service';
 
-const headersCons = {
-  headers: new Headers({
-     'Content-Type': 'application/json' ,
-     'Access-Control-Allow-Origin':'*'
-  })
-};
+// const headersCons = {
+//   headers: new HttpHeaders({
+//      'Content-Type': 'application/json' ,
+//      'Access-Control-Allow-Origin':'*'
+//   })
+// };
 
 @Injectable({ providedIn: 'root' })
 export class AssignmentService {
 
-  private sampleAssignmetUrl = 'http://localhost/pr/assignment.php?id=1';  // URL to web api
+  private sampleAssignmetUrl:any = 'http://localhost/pr/assignment.php?id=1';  // URL to web api
 
-  private assignmentUrl = 'http://localhost/pr/assignment.php';  // URL to web api
-    private newAssignmentUrl = 'http://localhost/pr/assignment-new.php';  // URL to web api
-  private commentUrl = 'http://localhost/pr/comment.php';  // URL to web api
-  private newCommentUrl = 'http://localhost/pr/comment-new.php';  // URL to web api
-  private accessToken = '';
+  private assignmentUrl:any = 'http://localhost/pr/assignment.php';  // URL to web api
+  private newAssignmentUrl:any = 'http://localhost/pr/assignment-new.php';  // URL to web api
+  private solutionUrl:any = 'http://localhost/pr/assignment-solution.php';  // URL to web api
+  private newSolutionUrl:any = 'http://localhost/pr/assignment-solution-new.php';  // URL to web api
+  private commentUrl:any = 'http://localhost/pr/comment.php';  // URL to web api
+  private newCommentUrl:any = 'http://localhost/pr/comment-new.php';  // URL to web api
+  private countUrl:any = 'http://localhost/pr/count.php';  // URL to web api
+  private accessToken:any = '';
 
   constructor(
     private http: HttpClient,
@@ -36,16 +40,13 @@ export class AssignmentService {
     }
 
 
+  getCount(count:string): Observable<number> {
 
+    const url = `${this.countUrl}?count=${count}`;
+    return this.http.get<number>(url);
 
-  /** GET heroes from the server */
-  getAssignment (): Observable<Assignment> {
-    return this.http.get<Assignment>(this.sampleAssignmetUrl)
-      .pipe(
-        tap(asssignment => this.log(`fetched asssignment`)),
-        catchError(this.handleError('getAssignment', []))
-      );
   }
+// {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}
 
 
 
@@ -63,38 +64,79 @@ export class AssignmentService {
 
   /** GET hero by id. Will 404 if id not found */
   getAssignments(tag:string): Observable<Assignment[]> {
+    let url:any;
     if(tag==null){
-      const url = `${this.assignmentUrl}`;
+      url = `${this.assignmentUrl}`;
     }
     else{
-      const url = `${this.assignmentUrl}?tag=${tag}`;
+      url = `${this.assignmentUrl}?tag=${tag}`;
     }
-    return this.http.get<Assignment>(url).pipe(
+    return this.http.get<Assignment[]>(url).pipe(
       tap(_ => this.log(`fetched assignments`)),
-      catchError(this.handleError<Assignment>(`getAssignments`))
+      catchError(this.handleError<Assignment[]>(`getAssignments`))
+    );
+  }
+
+  /** GET hero by id. Will 404 if id not found */
+  getAssignmentsUploadedBy(uploadedBy:number): Observable<Assignment[]> {
+    const url = `${this.assignmentUrl}?uploadedBy=${uploadedBy}`;
+
+    return this.http.get<Assignment[]>(url).pipe(
+      tap(_ => this.log(`fetched assignments`)),
+      catchError(this.handleError<Assignment[]>(`getAssignments`))
+    );
+  }
+
+  /** GET hero by id. Will 404 if id not found */
+  getSolutionsForAssignment(assignmentId:number): Observable<AssignmentSolution[]> {
+    const url = `${this.solutionUrl}?assignmentId=${assignmentId}`;
+
+    return this.http.get<AssignmentSolution[]>(url).pipe(
+      tap(_ => this.log(`fetched solutioons`)),
+      catchError(this.handleError<AssignmentSolution[]>(`get Solutions for assignemtn`))
+    );
+  }
+
+
+
+
+  getSolutionsForUser(userId:number): Observable<AssignmentSolution[]> {
+    const url = `${this.solutionUrl}?userId=${userId}`;
+
+    return this.http.get<AssignmentSolution[]>(url).pipe(
+      tap(_ => this.log(`fetched solutioons`)),
+      catchError(this.handleError<AssignmentSolution[]>(`get Solutions for user`))
     );
   }
 
 
 
   /** POST: add a new hero to the server */
-  addAssignment (title:string,description:string,tags:string,authToken:string): Observable<Assignment> {
+  addAssignment (title:string,description:string,tags:any[],externalAttachment,authToken:string): Observable<Assignment> {
     const url = `${this.newAssignmentUrl}?authToken=${authToken}`;
-    return this.http.post<Assignment>(url, JSON.stringify({title,description,tags}), headersCons.headers).pipe(
+    return this.http.post<Assignment>(url, JSON.stringify({title,description,tags,externalAttachment}), {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
       tap((assignment: Assignment) => this.log(`added assignment w/ id=${assignment.id}`)),
       catchError(this.handleError<Assignment>('addAssignment'))
     );
   }
 
 
+  /** POST: add a new hero to the server */
+  addAssignmentSol (assignmentId:number,text:string,externalAttachment,authToken:string): Observable<Assignment> {
+    const url = `${this.newSolutionUrl}?authToken=${authToken}`;
+    return this.http.post<Assignment>(url, JSON.stringify({assignmentId,text,externalAttachment}), {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
+      tap((assignment: Assignment) => this.log(`added assignment w/ id=${assignment.id}`)),
+      catchError(this.handleError<Assignment>('addAssignment'))
+    );
+  }
 
 
   ///comments...........
   getAssignmentComments(id: number): Observable<Comment[]> {
     const url = `${this.commentUrl}?assignmentId=${id}`;
-    return this.http.get<Assignment>(url).pipe(
+    return this.http.get<Comment[]>(url).pipe(
       tap(_ => this.log(`fetched assignment  comments`)),
-      catchError(this.handleError<Assignment>(`getAssignment id=${id}`))
+      catchError(this.handleError<Comment[]>(`getAssignment id=${id}`))
     );
   }
 
@@ -103,7 +145,7 @@ export class AssignmentService {
   /** POST: add a new hero to the server */
   addAssignmentComment (text:string,assignmentId:number,authToken:string): Observable<Comment> {
     const url = `${this.newCommentUrl}?authToken=${authToken}`;
-    return this.http.post<Comment>(url, JSON.stringify({text,assignmentId}), headersCons.headers).pipe(
+    return this.http.post<Comment>(url, JSON.stringify({text,assignmentId}), {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
       tap((assignment: Comment) => this.log(`added comment w/ id=${assignment.id}`)),
       catchError(this.handleError<Comment>('addComment'))
     );
@@ -120,7 +162,7 @@ export class AssignmentService {
       this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return error.message;
     };
   }
 

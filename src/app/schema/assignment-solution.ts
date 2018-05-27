@@ -1,10 +1,11 @@
-export class AssignmentSolution {
+export interface AssignmentSolution {
    id: number;
-   title: string;
-   description: string;
-   uploadedBy:number;
-   attachmentId:number;
+
+   text: string;
+   userId:number;
+   externalAttachment:number;
    jsonData:string;
    likes:number;
    dislikes:number;
+   time:number;
  }

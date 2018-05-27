@@ -4,7 +4,11 @@ import { Location } from '@angular/common';
 
 
 import { AssignmentService } from '../services/assignment.service';
+import { CurrentUser } from '../schema/currentuser';
+import { Assignment } from '../schema/assignment';
 
+
+import {MatSnackBar} from '@angular/material';
 
 
 import { Observable ,  Subject ,  of } from 'rxjs';
@@ -25,14 +29,13 @@ export class TaskDetailsComponent implements OnInit {
 
   task: Assignment;
   loading:boolean = true;
-
-
-
-  dpUrl = 'https://designshack.net/tutorialexamples/profile-layout-content-tabs/images/avatar.png';
-  taskTitle = 'Dummy Task Dummy Task Dummy Task Dummy Task';
-  username = 'jan.arifullah';
-  publicName = 'Arifullah Jan';
-
+  text:any;
+  userId:any;
+  externalAttachment:any;
+  username:any;
+  authToken:any;
+  loggedIn:any;
+  assignmentId:any;
 
 
   dicussions = [
@@ -44,6 +47,8 @@ export class TaskDetailsComponent implements OnInit {
 
   ];
 
+  solutions = [];
+
   newcomment:string;
 
 
@@ -52,25 +57,27 @@ export class TaskDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private assignmentService: AssignmentService,
-    private location: Location) {}
+    private location: Location,public snackBar: MatSnackBar) {}
 
 
 
   ngOnInit(): void {
 
     this.loading = true;
+    this.assignmentId = +this.route.snapshot.paramMap.get('id');
 
     this.getAssignment();
     this.getComments();
+    this.getAssignmentSolutions();
 
-    let a = localStorage.getItem('currentUser');
+    let a:string = localStorage.getItem('currentUser');
     console.log(a);
     if(a){
-      a=JSON.parse(a);
-      this.username = a.username;
-      this.userId = a.userId;
+      let currentUser:CurrentUser=JSON.parse(a);
+      this.username = currentUser.username;
+      this.userId = currentUser.userId;
       this.loggedIn=true;
-      this.authToken = a.authToken;
+      this.authToken = currentUser.authToken;
 
     }
 
@@ -88,7 +95,15 @@ export class TaskDetailsComponent implements OnInit {
         this.loading = false;
       });
   }
-
+  getAssignmentSolutions(): void {
+    this.loading=true;
+    this.assignmentService.getSolutionsForAssignment(this.assignmentId)
+      .subscribe(solutions => {
+        console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+        this.solutions = solutions;
+        this.loading = false;
+      });
+  }
 
   getComments(): void {
     const id = +this.route.snapshot.paramMap.get('id');

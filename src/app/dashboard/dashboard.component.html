@@ -12,7 +12,7 @@
           <div mat-card-avatar>
 
             <cl-image public-id="{{task.dpImgUrl}}">
-              <cl-transformation width="40" height="40" gravity="face" radius="100" effect="sepia" crop="thumb">
+              <cl-transformation width="40" height="40" gravity="face" radius="100" crop="thumb">
               </cl-transformation>
 
 
@@ -25,7 +25,11 @@
         </mat-card-header>
         <mat-card-content>
             <markdown ngPreserveWhitespaces>{{task.description}}</markdown>
-              <a routerLink="/task/{{task.id}}">View details</a>
+            <div class="more-text" >
+              <a routerLink="/task/{{task.id}}">View details ></a>
+
+            </div>
+
         </mat-card-content>
       </mat-card>
 
@@ -33,10 +37,11 @@
     </div>
 
 
-    <mat-paginator [length]="length"
+    <mat-paginator [length]="noOfAssignments"
               [pageSize]="pageSize"
               [pageSizeOptions]="pageSizeOptions"
-              (page)="pageEvent = $event">
+              >
+              <!-- (page)="pageEvent = $event" -->
     </mat-paginator>
 
 

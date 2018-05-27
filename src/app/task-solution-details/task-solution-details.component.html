@@ -1,0 +1,111 @@
+
+
+
+
+<div class="row">
+
+  <div class="col-for-sides"></div>
+
+  <div class="col-for-page padding-responsive">
+
+    <mat-card class="task-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+
+          <cl-image public-id="{{solution.dpImgUrl}}">
+            <cl-transformation width="40" height="40" gravity="face" radius="100" effect="sepia" crop="thumb">
+            </cl-transformation>
+
+
+
+          </cl-image>
+
+
+        </div>
+        <mat-card-title> <br>by <a routerLink="/profile/{{solution.uploadedBy}}">{{solution.username}}</a></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="content">
+
+
+          <div class="title-options">
+            <div class="title-option" id ="fav-star">654 <i class="far fa-star"></i></div>
+            <div class="title-option" id ="fav-star"><i class="far fa-star"></i></div>
+            <div class="title-option" id ="fav-star"><i class="far fa-star"></i></div>
+            <mat-divider></mat-divider>
+
+          </div>
+
+
+
+          <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
+
+          <markdown ngPreserveWhitespaces>{{solution.text}}</markdown>
+
+
+
+         <div class="externalAttachment"  href="{{solution.externalAttachment}}">
+           <!-- <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="loggedIn" routerLink="/task-submit/{{task.id}}">Submit</button> -->
+
+         </div>
+
+          <!-- <div class="attachment">
+
+
+
+          </div>
+ -->
+
+
+
+
+
+
+
+
+        </div>
+
+
+      </mat-card-content>
+    </mat-card>
+
+
+
+
+    <!-- <div class="title">
+      <img class="dp" src="{{dpUrl}}"/>
+
+      <div class="title-details">
+        <div class="task-title">{{taskTitle}}</div>
+        <div class="task-subtitle">Dummy Task</div>
+
+
+      </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  <app-sidebar class="col-for-sides"></app-sidebar>
+
+
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {Router} from '@angular/router';
@@ -13,10 +13,8 @@ import {
  } from 'rxjs/operators';
 
 
-import {MatChipInputEvent} from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 
-import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
 
@@ -24,9 +22,10 @@ import {MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material
 
 import { CovalentTextEditorModule } from '@covalent/text-editor';
 
+import {MatSnackBar} from '@angular/material';
 
-
-
+import { Assignment } from '../schema/assignment';
+import { CurrentUser } from '../schema/currentuser';
 import { AssignmentService } from '../services/assignment.service';
 
 
@@ -45,9 +44,20 @@ export class TaskAddComponent implements OnInit {
 
 
 
+  assignment:Assignment;
+  title:any;
+  description:any;
+  userId:any;
+  externalAttachment:any;
+  loading:any=false;
+  username:any;
+  authToken:any;
+  loggedIn:any;
 
 
-visible: boolean = true;
+
+
+  visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
   addOnBlur: boolean = false;
@@ -77,7 +87,7 @@ visible: boolean = true;
 
   @ViewChild('tagInput') tagInput: ElementRef;
 
-  constructor(private assignmentService: AssignmentService) {
+  constructor(private assignmentService: AssignmentService,private router: Router,public snackBar: MatSnackBar) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
         startWith(null),
         map((tag: string | null) => tag ? this.filter(tag) : this.allTags.slice()));
@@ -168,25 +178,17 @@ visible: boolean = true;
 
 
 
-  assignment:Assignment;
-  title:string;
-  description:string;
-  userId:number;
-
-  constructor(private assignmentService: AssignmentService,private router: Router) {
-  }
-
 
 
   ngOnInit(): void {
-    let a = localStorage.getItem('currentUser');
+    let a:string = localStorage.getItem('currentUser');
     console.log(a);
     if(a){
-      a=JSON.parse(a);
-      this.username = a.username;
-      this.userId = a.userId;
+      let currentUser:CurrentUser=JSON.parse(a);
+      this.username = currentUser.username;
+      this.userId = currentUser.userId;
       this.loggedIn=true;
-      this.authToken = a.authToken;
+      this.authToken = currentUser.authToken;
 
     }
 
@@ -198,7 +200,7 @@ visible: boolean = true;
 
   addAssignment(){
     this.loading=true;
-    this.assignmentService.addAssignment(this.title,this.description,this.tags,this.authToken).subscribe(response=>{
+    this.assignmentService.addAssignment(this.title,this.description,this.tags,this.externalAttachment,this.authToken).subscribe(response=>{
 
       this.loading = false;
       console.log(response);
@@ -219,6 +221,35 @@ visible: boolean = true;
 
     });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

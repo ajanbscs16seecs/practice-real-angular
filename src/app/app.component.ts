@@ -13,17 +13,17 @@ export class AppComponent {
   title = 'PracticeReal.com';
 
 
-  username = '';
-  userId :number;
-  profileUrl:String;
-  loggedIn:boolean=false;
-  notloggedIn:boolean = true;
+  username:any = '';
+  userId:any;
+  profileUrl:any;
+  loggedIn:any=false;
+  notloggedIn:any = true;
 
 
 
 
   ngOnInit(){
-    let a = localStorage.getItem('currentUser');
+    let a:any = localStorage.getItem('currentUser');
     console.log(a);
     if(a){
       a=JSON.parse(a);
@@ -37,12 +37,12 @@ export class AppComponent {
   }
 
   refresh(){
-    let a = localStorage.getItem('currentUser');
+    let a:any = localStorage.getItem('currentUser');
     console.log(a);
     if(a){
       a=JSON.parse(a);
       this.username = a.username;
-      this.userId = a.userId;
+      this.userId = <number>a.userId;
       this.loggedIn=true;
       this.notloggedIn=false;
 

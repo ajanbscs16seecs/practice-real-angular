@@ -54,11 +54,11 @@ export class SigninComponent implements OnInit {
   }
   signup(){
     this.loading = true;
-    this.userService.addUser(this.username,this.email,this.password).subscribe(response=>{
+    this.userService.addUser(this.username,this.email,this.password).subscribe((response)=>{
 
       this.loading = false;
       console.log(response);
-      if(response){
+      if(response!==null){
         this.router.navigate(['/profile/'+response.id]);
       }
       else{

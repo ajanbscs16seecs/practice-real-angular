@@ -2,7 +2,14 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { AssignmentService } from '../services/assignment.service';
+import { CurrentUser } from '../schema/currentuser';
+import { Assignment } from '../schema/assignment';
 
+
+import {MatSnackBar} from '@angular/material';
+
+import {Router} from '@angular/router';
 import { Observable ,  Subject ,  of } from 'rxjs';
 
 import {
@@ -28,115 +35,110 @@ export class TaskSubmitComponent implements OnInit {
 
 
 
-  dpUrl = 'https://designshack.net/tutorialexamples/profile-layout-content-tabs/images/avatar.png';
-  taskTitle = 'Dummy Task Dummy Task Dummy Task Dummy Task';
-  username = 'jan.arifullah';
-  publicName = 'Arifullah Jan';
-
-  tiles = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
 
 
-  dicussions = [
-    {text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpisit amet interdum ultrices, sapien mauris maximus arcu'},
-    {text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpisit amet interdum ultrices, sapien mauris maximus arcu'},
-    {text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpisit amet interdum ultrices, sapien mauris maximus arcu'},
-    {text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpisit amet interdum ultrices, sapien mauris maximus arcu'},
-    {text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpisit amet interdum ultrices, sapien mauris maximus arcu'},
-
-  ];
-
-
-  visible: boolean = true;
-  selectable: boolean = true;
-  removable: boolean = true;
-  addOnBlur: boolean = true;
-
-  // Enter, comma
-  separatorKeysCodes = [ENTER, COMMA];
-
-  tags = [
-    { name: 'Lemon' },
-    { name: 'Lime' },
-    { name: 'Apple' },
-  ];
+text:any;
+userId:any;
+externalAttachment:any;
+username:any;
+authToken:any;
+loggedIn:any;
+assignmentId:any;
+loading:any=true;
 
 
-  add(event: MatChipInputEvent): void {
-    let input = event.input;
-    let value = event.value;
-
-    // Add our fruit
-    if ((value || '').trim()) {
-      this.tags.push({ name: value.trim() });
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-  }
-
-  remove(tag: any): void {
-    let index = this.tags.indexOf(tag);
-
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
-  }
-
-
-
-
-
-
-
-
-
-
-  //
-  // currentUpload: Upload;
-  // dropzoneActive:boolean = false;
-  //
-  // constructor() { }
-  //
-  // dropzoneState($event: boolean) {
-  //   this.dropzoneActive = $event;
-  // }
-  //
-  // handleDrop(fileList: FileList) {
-  //
-  //   let filesIndex = _.range(fileList.length)
-  //
-  //   _.each(filesIndex, (idx) => {
-  //     this.currentUpload = new Upload(fileList[idx]);
-  //     this.upSvc.pushUpload(this.currentUpload)}
-  //   )
-  // }
-  //
-  //
-
-
-
-
-
-
-
-  constructor() {
+  constructor(private route: ActivatedRoute,
+    private assignmentService: AssignmentService,
+    private location: Location,public snackBar: MatSnackBar,private router: Router) {
 
   }
 
 
 
   ngOnInit(): void {
+    let a:string = localStorage.getItem('currentUser');
+    console.log(a);
+    if(a){
+      let currentUser:CurrentUser=JSON.parse(a);
+      this.username = currentUser.username;
+      this.userId = currentUser.userId;
+      this.loggedIn=true;
+      this.authToken = currentUser.authToken;
 
-
+    }
+    this.assignmentId = +this.route.snapshot.paramMap.get('id');
 
   }
+
+
+
+    addAssignmentSol(){
+      this.loading=true;
+      this.assignmentService.addAssignmentSol(this.assignmentId,this.text,this.externalAttachment,this.authToken).subscribe(response=>{
+        this.loading = false;
+        console.log(response);
+        if(response.id==0){
+          this.snackBar.open("Couldn't post the assignment", null, {
+            duration: 2000,
+          });
+        }
+        else{
+          console.log("navigating..");
+          this.router.navigate(['/task/'+response.id]);
+
+        }
+      });
+    }
+
+
+    simplemdeoptions : any ={
+    	// autofocus: true,
+      autoDownloadFontAwesome:true,
+    	autosave: {
+    		enabled: true,
+    		uniqueId: "MyUniqueID",
+    		delay: 1000,
+    	},
+    	// element: document.getElementById("MyID"),
+    	forceSync: true,
+    	// hideIcons: ["guide", "heading"],
+    	// indentWithTabs: false,
+    	// initialValue: "Hello world!",
+    	// lineWrapping: false,
+    	placeholder: "Description here...",
+    	promptURLs: true,
+    	// renderingConfig: {
+    	// 	singleLineBreaks: false,
+    	// 	codeSyntaxHighlighting: true,
+    	// },
+    	shortcuts: {
+    		drawTable: "Cmd-Alt-T"
+    	},
+    	showIcons: ["code"],
+    	// spellChecker: true,
+    	styleSelectedText: false,
+    	tabSize: 4,
+      // toolbar: [{
+      //         name: "bold",
+      //         action: "toggleBold",
+      //         className: "fa fa-bold",
+      //         title: "Bold (Ctrl+B)",
+      //     },
+      //     "|"
+      // ],
+    	// toolbar: true,
+    	// toolbarTips: true,
+    };
+
+
+
+
+
+
+
+
+
+
 }
 
 

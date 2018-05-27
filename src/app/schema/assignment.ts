@@ -1,9 +1,10 @@
-export class Assignment {
+export interface Assignment {
    id: number;
    title: string;
    description: string;
    uploadedBy:number;
-   attachmentId:number;
+   attachments:any;
+   externalAttachment:string;
    jsonData:string;
    likes:number;
    dislikes:number;
