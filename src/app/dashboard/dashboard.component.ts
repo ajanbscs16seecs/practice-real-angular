@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-  tasks = [
+  tasks:any[] = [
     // {dpurl:'https://s.ndtvimg.com/images/entities/120/kane-williamson-1058.png',title:'Android Layout Design',description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpisit amet interdum ultrices, sapien mauris maximus arcu'},
     // {dpurl:'https://s.ndtvimg.com/images/entities/120/kane-williamson-1058.png',title:'Write a letter',description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpisit amet interdum ultrices, sapien mauris maximus arcu'},
     // {dpurl:'https://s.ndtvimg.com/images/entities/120/kane-williamson-1058.png',title:'Make a mathematical model',description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dui id nibh luctus pharetra. Morbi placerat, turpisit amet interdum ultrices, sapien mauris maximus arcu'},
@@ -26,9 +26,10 @@ export class DashboardComponent implements OnInit {
 
   ];
 
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions = [5, 10, 25, 100];
+  noOfAssignments:any = 100;
+  pageSize:any = 10;
+  pageSizeOptions:any[] = [20];
+  loading:any=true;
 
 
   constructor(private route: ActivatedRoute,
@@ -38,14 +39,19 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-
-
     this.loading=true;
     let tag = this.route.snapshot.paramMap.get('tag');
 
     this.assignmentService.getAssignments(this.route.snapshot.paramMap.get('tag'))
       .subscribe(tasks => {
         this.tasks = tasks;
+        this.loading = false;
+      });
+
+    this.assignmentService.getCount("assignments")
+      .subscribe(noOfAssignments => {
+        this.noOfAssignments = noOfAssignments;
+        console.log("no of asignment"+ noOfAssignments);
         this.loading = false;
       });
 

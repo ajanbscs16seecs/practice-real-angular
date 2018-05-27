@@ -13,18 +13,43 @@
       <div class="col-dp dp">
         <!-- <img  src="{{profileImgUrl}}"/> -->
 
-        <cl-image id="profile-img" public-id="{{user.dpImgUrl}}">
-          <cl-transformation width="150" height="150" gravity="face" radius="100" effect="sepia" crop="thumb">
+        <cl-image  id="dp-img" class="profile-img" public-id="{{user.dpImgUrl}}">
+          <cl-transformation  width="150" height="150" gravity="face" radius="100" crop="thumb">
           </cl-transformation>
 
         </cl-image>
 
+
+
+        <div class="profile-img-dropzone on-dp"  *ngIf="isEditable">
+          <div class="dropzone">
+            <file-drop headertext="Drop files here..." (onFileDrop)="dropped($event)"
+            (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+            </file-drop>
+        </div></div>
+
+        <div class="on-dp passthrough"  *ngIf="isEditable">
+          <p class="on-dp-text passthrough">Drop new profile image here...</p>
+          <div class="on-dp"  *ngIf="uploadingImg">
+            <mat-progress-spinner
+              [value]="progressValue" [mode]="mode" diameter="155" strokeWidth="5"></mat-progress-spinner>
+          </div>
+
+
+        </div>
+        <!-- <div class="on-dp spinner passthrough"  *ngIf="isEditable">
+          <mat-progress-spinner
+            [value]="profressValue"></mat-progress-spinner>
+
+        </div> -->
+
       </div>
       <div id="col-info info">
 
-
-
-
+        <div class="button-row" *ngIf="isEditable">
+          <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="!(loading)" (click)="addAssignment()" >Save Changes</button>
+          <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
+        </div>
 
 
       </div>
@@ -37,18 +62,44 @@
 
       <div class="profile-content">
 
+
+
           <p>@{{user.username}}</p>
-          <div id="title-options">
-            <div class="title-option" id ="fav-star"><i class="fas fa-user-plus"></i></div>
-            <div class="title-option" id ="fav-star">{{user.points}} <i class="fas fa-plus-square"></i></div>
-            <mat-divider></mat-divider>
+
+
+          <div class="row">
+
+            <mat-form-field class="col-3 form-element" appearance="outline" *ngIf="isEditable">
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="user.email" type="email" placeholder="Email" >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="col-3 form-element" appearance="outline" *ngIf="isEditable">
+              <mat-label>Old Password</mat-label>
+              <input matInput [(ngModel)]="user.oldpassword" type="password" placeholder="Old password" >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="col-3 form-element" appearance="outline" *ngIf="isEditable">
+              <mat-label>Old Password</mat-label>
+              <input matInput [(ngModel)]="user.newpassword" type="password" placeholder="New password" >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+
 
           </div>
 
+          <mat-divider></mat-divider>
+          <div id="title-options">
+            <div class="title-option" id ="fav-star"><i class="fas fa-user-plus"></i></div>
+            <div class="title-option" id ="fav-star">{{user.points}} <i class="fas fa-plus-square"></i></div>
+          </div>
+          <mat-divider style="clear:both;"></mat-divider>
 
           <mat-tab-group>
             <mat-tab label="About">
-              <markdown ngPreserveWhitespaces>{{user.about}}</markdown>
+              <td-text-editor id="editor" [(ngModel)]="user.about"  [options]="simplemdeoptions" *ngIf="isEditable"></td-text-editor>
+
+              <markdown ngPreserveWhitespaces *ngIf="!isEditable">{{user.about}}</markdown>
 
             </mat-tab>
             <mat-tab label="Assignments">
@@ -59,7 +110,7 @@
                     <div mat-card-avatar>
 
                       <cl-image public-id="{{task.dpImgUrl}}">
-                        <cl-transformation width="40" height="40" gravity="face" radius="100" effect="sepia" crop="thumb">
+                        <cl-transformation width="40" height="40" gravity="face" radius="100"  crop="thumb">
                         </cl-transformation>
 
 
@@ -73,7 +124,11 @@
 
                   <mat-card-content>
                       <markdown ngPreserveWhitespaces>{{task.description}}</markdown>
-                        <a routerLink="/task/{{task.id}}">View details</a>
+                      <div class="more-text" >
+                        <a routerLink="/task/{{task.id}}">View details ></a>
+
+                      </div>
+
                   </mat-card-content>
                 </mat-card>
 

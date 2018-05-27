@@ -27,7 +27,7 @@
       <mat-card-content>
         <div class="content">
 
-          <mat-chip-list class="mat-chip-list"  aria-orientation="horizontal" *ngFor="let tag of tags">
+          <mat-chip-list class="mat-chip-list"  aria-orientation="horizontal" *ngFor="let tag of task.tags">
             <mat-chip color="primary" selected="true">{{tag}}</mat-chip>
           </mat-chip-list>
 
@@ -48,28 +48,42 @@
 
 
 
+         <div class="task-submit"  routerLink="/task-submit/{{task.id}}">
+           <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="loggedIn" routerLink="/task-submit/{{task.id}}">Submit</button>
 
-          <mat-divider></mat-divider>
-          <!-- <div class="attachment">
+         </div>
+
+          <a class="externalAttachment clear"  href="{{solution.externalAttachment}}">
+            <!-- <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="loggedIn" routerLink="/task-submit/{{task.id}}">Submit</button> -->
+
+          </a>
 
 
-
-          </div>
- -->
-
-          <mat-tab-group>
+          <mat-tab-group class="clear">
             <mat-tab label="Discussions">
 
               <!-- <div class="discussions" > -->
                 <div class="new-comment" *ngIf="loggedIn">
 
-                    <mat-form-field appearance="outline">
-                      <mat-label>Write Comment</mat-label>
-                      <textarea matInput [(ngModel)]="newcomment" placeholder="Write some about the task..."></textarea>
-                      <mat-hint>New comment</mat-hint>
-                    </mat-form-field>
-                  	<button class="centered-horizontal" mat-raised-button color="accent" *ngIf="!loading" (click)="addComment()" >Submit</button>
-                    <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
+                  <div class="flex-row">
+                    <div style="padding:10px;">
+                      <mat-form-field  appearance="outline">
+                        <mat-label>Write Comment</mat-label>
+                        <input matInput [(ngModel)]="newcomment" placeholder="Write some about the task...">
+                        <mat-hint>New comment</mat-hint>
+                      </mat-form-field>
+
+                    </div>
+
+                      <div style="flex: 0 0 150px;padding:10px;align-self: center;">
+                        <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="!loading" (click)="addComment()" >Comment</button>
+                        <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
+
+                      </div>
+
+                    </div>
+
+
                   </div>
 
                 <div *ngFor="let comment of dicussions">
@@ -96,9 +110,35 @@
 
             </mat-tab>
             <mat-tab label="Submissions">
-              <h3>Some more tab content</h3>
-              <p>...</p>
 
+              <div class="list-item-wrapper" *ngFor="let solution of solutions">
+                <mat-card class="task-card">
+                  <mat-card-header>
+                    <div mat-card-avatar>
+
+                      <cl-image public-id="{{solution.dpImgUrl}}">
+                        <cl-transformation width="40" height="40" gravity="face" radius="100" crop="thumb">
+                        </cl-transformation>
+
+
+
+                      </cl-image>
+
+
+                    </div>
+                    <mat-card-title>BY <a routerLink="/profile/{{solution.userId}}">{{solution.username}}</a></mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                      <markdown ngPreserveWhitespaces>{{solution.text}}</markdown>
+                      <div class="more-text" >
+                        <a routerLink="/task/{{solution.id}}" >View details ></a>
+
+                      </div>
+                  </mat-card-content>
+                </mat-card>
+
+
+              </div>
 
 
 

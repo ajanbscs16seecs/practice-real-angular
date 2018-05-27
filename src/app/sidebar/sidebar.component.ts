@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
+import { CurrentUser } from '../schema/currentuser';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,25 +11,28 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
 
-  loggedIn = false;
+  loggedIn:boolean = false;
   notloggedIn:boolean = true;
-  userId:number;
-  username = '';
+  userId:any;
+  username:any = '';
+  authToken:any;
 
 
   constructor() { }
 
   ngOnInit() {
-    let user = localStorage.getItem('currentUser');
-    console.log(user);
-    if(user){
-      user=JSON.parse(user);
-      this.username = user.username;
-      this.userId = user.userId;
+    let a:string = localStorage.getItem('currentUser');
+    console.log(a);
+    if(a){
+      let currentUser:CurrentUser=JSON.parse(a);
+      this.username = currentUser.username;
+      this.userId = currentUser.userId;
       this.loggedIn=true;
       this.notloggedIn = false;
+      this.authToken = currentUser.authToken;
 
     }
+
   }
 
 

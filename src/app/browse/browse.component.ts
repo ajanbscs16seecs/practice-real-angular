@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowseComponent implements OnInit {
 
-
+  searchtag:any;  
   constructor() { }
 
   ngOnInit() {

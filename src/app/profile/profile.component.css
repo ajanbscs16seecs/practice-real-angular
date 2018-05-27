@@ -29,6 +29,8 @@
   height: 100px;
   width: 100px;
   border-radius:3px;
+
+  z-index: -5;
   /* box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.2); */
 }
 
@@ -47,6 +49,7 @@
   #profile-img{
     height: 90%;
     width: 90%;
+    z-index: -5;
   }
 
   .col-info{
@@ -57,11 +60,53 @@
 
 }
 
+.dp{
+  position: relative;
+}
+.profile-img-dropzone{
 
+  opacity: 0.00001;
 
+}
+
+.on-dp{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.dropzone{
+  height: 100px;
+  width: 100px;
+}
+.on-dp-text{
+  width: 100%;
+  text-align: center;
+  color: #47f7df;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.passthrough{
+  pointer-events:none;
+}
 .info{
   padding: 20px 50px;
 }
+
+.spinner{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.form-element{
+  padding: 0px 2px;
+}
+
+
 
 .profile-content{
   clear: both;

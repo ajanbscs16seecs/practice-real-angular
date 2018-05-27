@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
-import { Response } from '@angular/common/http';
 import { Observable} from 'rxjs';
 
 import { catchError, map, tap } from 'rxjs/operators';
@@ -8,10 +7,24 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../schema/user';
 import { MessageService } from './message.service';
 
+
+
+
+
+
+
+
+
+
 const headersCons = {
-  headers: new Headers({
+  headers: new HttpHeaders({
      'Content-Type': 'application/json' ,
      'Access-Control-Allow-Origin':'*'
+  }),
+  headersWithProgress: new HttpHeaders({
+     'Content-Type': 'application/json' ,
+     'Access-Control-Allow-Origin':'*',
+     'reportProgress': 'true',
   })
 };
 
@@ -20,7 +33,8 @@ export class UserService {
 
   private sampleUserUrl = 'http://localhost/pr/user.php?id=1';  // URL to web api
 
-  private usersUrl = 'http://localhost/pr/user.php';  // URL to web api
+  private dpUrl = 'http://localhost/pr/dp.php';  // URL to web api
+    private usersUrl = 'http://localhost/pr/user.php';  // URL to web api
     private newUserUrl = 'http://localhost/pr/user-new.php';  // URL to web api
   private signinUrl = 'http://localhost/pr/signin.php';  // URL to web api
   public authToken: string;
@@ -30,14 +44,14 @@ export class UserService {
     private messageService: MessageService) {
         // set token if saved in local storage
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token;
+        this.authToken = currentUser && currentUser.authToken;
     }
 
 
 
     login(email: string, password: string): Observable<boolean> {
-        return this.http.post(this.signinUrl, JSON.stringify({email, password}), headersCons.headers).pipe(
-          map((response: Response) => {
+        return this.http.post(this.signinUrl, JSON.stringify({email, password}), {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
+          map((response: any) => {
             // login successful if there's a jwt token in the response
             const authToken = response && response.authToken;
             if (authToken) {
@@ -45,6 +59,8 @@ export class UserService {
                 this.authToken = authToken;
                 let userId = response.userId;
                 let username = response.username;
+
+
 
                 // store username and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify({userId,email,username, authToken }));
@@ -56,7 +72,7 @@ export class UserService {
                 return false;
             }
           }),
-          catchError(this.handleError<User>(`couldn't login`))
+          catchError(this.handleError<any>(`couldn't login`))
         );
     }
 
@@ -83,14 +99,6 @@ export class UserService {
 
 
 
-  /** GET heroes from the server */
-  getUser (): Observable<User> {
-    return this.http.get<User>(this.sampleUserUrl)
-      .pipe(
-        tap(user => this.log(`fetched user`)),
-        catchError(this.handleError('getUser', []))
-      );
-  }
 
 
 
@@ -120,11 +128,11 @@ export class UserService {
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
-  addUser (username:String,email:String,password:String): Observable<boolean> {
+  addUser (username:String,email:String,password:String): Observable<any> {
 
     //
-    return this.http.post(this.signinUrl,JSON.stringify({username,email,password}) , headersCons.headers).pipe(
-      map((response: Response) => {
+    return this.http.post(this.signinUrl,JSON.stringify({username,email,password}) ,{headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
+      map((response: any) => {
         // login successful if there's a jwt token in the response
         const authToken = response && response.authToken;
         if (authToken) {
@@ -148,13 +156,26 @@ export class UserService {
   }
 
 
-  /** PUT: update the hero on the server */
-  updateHero (user: User): Observable<any> {
-    return this.http.put(this.usersUrl, user, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${user.id}`)),
-      catchError(this.handleError<any>('updateUser'))
-    );
-  }
+
+
+  postDp(fileToUpload: File,authToken:string): Observable<any> {
+    const url = `${this.dpUrl}?authToken=${authToken}`;
+    const formData: FormData = new FormData();
+    formData.append('dp', fileToUpload, fileToUpload.name);
+    return this.http
+      .post(url, formData,{headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*','reportProgress': 'true'})})
+      .pipe(
+        catchError(this.handleError<any>(`couldn't upload`))
+      );
+    }
+
+  // /** PUT: update the hero on the server */
+  // updateHero (user: User): Observable<any> {
+  //   return this.http.put(this.usersUrl, user, httpOptions).pipe(
+  //     tap(_ => this.log(`updated hero id=${user.id}`)),
+  //     catchError(this.handleError<any>('updateUser'))
+  //   );
+  // }
 
 
 
@@ -174,7 +195,7 @@ export class UserService {
       this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return error.message;
     };
   }
 

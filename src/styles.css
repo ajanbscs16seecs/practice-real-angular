@@ -81,6 +81,14 @@
 }
 
 
+.clear{
+  clear: both;
+}
+
+.more-text{
+  text-align: right;
+  width:100%;
+}
 
 body {
 	font: 15px/24px Nunito, Arial, sans-serif;

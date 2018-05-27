@@ -102,6 +102,11 @@
 }
 
 
+.clear{
+  clear: both;
+}
+
+
 
 
 
@@ -113,4 +118,36 @@
 .new-comment *{
   width: 100%;
 
+}
+
+
+.flex-row{
+  display: flex;
+  align-items: stretch;
+}
+
+.comment-box *{
+  width: 100%;
+}
+
+
+
+
+.task-submit{
+  width: 100%;
+
+}
+
+.task-submit *{
+  width: 100%;
+
+}
+
+.list-item-wrapper{
+  padding: 10px 10px;
+}
+
+.more-text{
+  width: 100%;
+  text-align: right;
 }

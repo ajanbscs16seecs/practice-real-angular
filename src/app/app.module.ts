@@ -7,9 +7,13 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { BrowserModule }  from '@angular/platform-browser';
 import { HttpClientModule }    from '@angular/common/http';
 
+
+
+import { FileDropModule } from 'ngx-file-drop';
+
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
-import { HighlightModule } from 'ngx-highlightjs';
+
 import { MarkdownModule } from 'ngx-markdown';
 
 
@@ -27,6 +31,7 @@ import { DashboardComponent }   from './dashboard/dashboard.component';
 import { BrowseComponent }   from './browse/browse.component';
 import { ProfileComponent }  from './profile/profile.component';
 import { TaskDetailsComponent }  from './task-details/task-details.component';
+import { TaskSolutionDetailsComponent }  from './task-solution-details/task-solution-details.component';
 import { TaskAddComponent }  from './task-add/task-add.component';
 import { TaskSubmitComponent }  from './task-submit/task-submit.component';
 import { AboutComponent }  from './about/about.component';
@@ -143,6 +148,7 @@ export class DemoMaterialModule {}
     MatButtonModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
+    FileDropModule,
     // HighlightModule.forRoot({ theme: 'default' }),
 
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'janmarwat'}),
@@ -168,6 +174,7 @@ export class DemoMaterialModule {}
     MessagesComponent,
     ProfileComponent,
     TaskDetailsComponent,
+    TaskSolutionDetailsComponent,
     TaskAddComponent,
     TaskSubmitComponent,
     AboutComponent,
