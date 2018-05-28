@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "PracticeReal",
+    "short_name": "pr",
     "icons": [
         {
             "src": "assets/pwa/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
+    "theme_color": "#00e5ff",
     "background_color": "#ffffff",
     "display": "standalone"
 }

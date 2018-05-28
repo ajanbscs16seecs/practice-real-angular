@@ -8,4 +8,9 @@ export interface Assignment {
    jsonData:string;
    likes:number;
    dislikes:number;
+   tags:any;
+
+   dpImgUrl:any;
+   username:any;
+
  }

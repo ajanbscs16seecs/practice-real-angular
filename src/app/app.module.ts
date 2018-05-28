@@ -16,9 +16,9 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { MarkdownModule } from 'ngx-markdown';
 
-
+import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
-import * as  Cloudinary from 'cloudinary-core';
+import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import { CovalentTextEditorModule } from '@covalent/text-editor';
 
 
@@ -134,7 +134,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 })
 export class DemoMaterialModule {}
 
-
+export const cloudinaryLib = {
+  Cloudinary: CloudinaryCore
+};
 
 
 @NgModule({
@@ -151,9 +153,12 @@ export class DemoMaterialModule {}
     FileDropModule,
     // HighlightModule.forRoot({ theme: 'default' }),
 
-    CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'janmarwat'}),
+    CloudinaryModule.forRoot(cloudinaryLib, { cloud_name: 'janmarwat'}),
 
     CovalentTextEditorModule,
+
+
+
 
 
 

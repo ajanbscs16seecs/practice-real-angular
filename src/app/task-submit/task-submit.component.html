@@ -22,9 +22,14 @@
           <mat-label>External Attachment</mat-label>
           <input matInput [(ngModel)]="externalAttachment" type="text" placeholder="Paste link" >
           <mat-icon matSuffix>link</mat-icon>
-          <mat-hint>You may usse Google Drive, Dropbox etc.<br><a href="https://files.fm/" target="blank">File.fm is nice tool.</a></mat-hint>
+          <mat-hint>You may usse Google Drive, Dropbox etc.<br><a href="https://files.fm/" target="blank">File.fm</a> is nice tool.
+            <br>Use <a href="https://stackblitz.com" target="blank">Stak blitz</a> and <a href="https://codepen.io" target="blank">Code pen</a> etc for code purposes
+
+
+          </mat-hint>
 
         </mat-form-field>
+        <br>
         <br>
 
         <mat-checkbox>This assignment is my own work, except where I have acknowledged the use of the works of other people.</mat-checkbox>
@@ -40,7 +45,7 @@
 
 
   </div>
-  <app-sidebar class="col-for-sides"></app-sidebar>
+  <app-sidebar class="col-for-sides  only-desktop"></app-sidebar>
 
 
 </div>

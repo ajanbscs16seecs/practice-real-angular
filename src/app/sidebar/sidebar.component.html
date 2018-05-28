@@ -2,12 +2,15 @@
 
 <nav class="menu">
 
-<a  routerLink="/explore">Explore</a>
-<a  routerLink="/profile/{{userId}}" *ngIf="loggedIn">Profile</a>
-<a routerLink="/signin" *ngIf="notloggedIn">Sign In</a>
+<a  mat-button  routerLink="/explore">Explore</a>
+<a  mat-button  routerLink="/profile/{{userId}}" *ngIf="loggedIn">Profile</a>
+<a  mat-button routerLink="/signin" *ngIf="notloggedIn">Sign In</a>
 
-<a  routerLink="/task-new" *ngIf="loggedIn">Post a task</a>
-<a  routerLink="/support">Contact/Support</a>
+<a  mat-button  routerLink="/task-new" *ngIf="loggedIn">Post a task</a>
+<a  mat-button  routerLink="/support">Contact/Support</a>
+
+
+<!-- <a  mat-button *ngIf="loggedIn" (click)="logout()">Logout</a> -->
 
 </nav>
 

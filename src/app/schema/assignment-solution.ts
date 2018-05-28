@@ -8,4 +8,8 @@ export interface AssignmentSolution {
    likes:number;
    dislikes:number;
    time:number;
+
+
+      dpImgUrl:any;
+      username:any;
  }

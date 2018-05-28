@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import {Router,NavigationEnd } from '@angular/router';
+
+import {MatSnackBar} from '@angular/material';
 // import{ MatSidenav} from '@angular/material/sidenav';
 // import{ MatSidenavContent} from '@angular/material/sidenav';
 // import{ MatSidenavContainer} from '@angular/material/sidenav';
@@ -19,10 +22,18 @@ export class AppComponent {
   loggedIn:any=false;
   notloggedIn:any = true;
 
+  constructor(private router: Router,public snackBar: MatSnackBar) { }
 
 
 
   ngOnInit(){
+    this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            window.scrollTo(0, 0)
+        });
+
     let a:any = localStorage.getItem('currentUser');
     console.log(a);
     if(a){

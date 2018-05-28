@@ -53,10 +53,10 @@
 
          </div>
 
-          <a class="externalAttachment clear"  href="{{solution.externalAttachment}}">
+          <!-- <a class="externalAttachment clear"  href="{{solution.externalAttachment}}"> -->
             <!-- <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="loggedIn" routerLink="/task-submit/{{task.id}}">Submit</button> -->
 
-          </a>
+          <!-- </a> -->
 
 
           <mat-tab-group class="clear">
@@ -75,7 +75,7 @@
 
                     </div>
 
-                      <div style="flex: 0 0 150px;padding:10px;align-self: center;">
+                      <div style="flex: 0 0 100px;padding:10px auto;margin: auto;align-self: center;">
                         <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="!loading" (click)="addComment()" >Comment</button>
                         <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
 
@@ -195,7 +195,7 @@
 
 
   </div>
-  <app-sidebar class="col-for-sides"></app-sidebar>
+  <app-sidebar class="col-for-sides  only-desktop"></app-sidebar>
 
 
 </div>

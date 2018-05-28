@@ -14,7 +14,11 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-@import url("../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css");
+/* @import url("../node_modules/@angular/material/prebuilt-themes/purple-green.css"); */
+
+/* @import 'style-custom-theme.scss'; */
+
+
 
 
 /* ******* step 2: box sizing */
@@ -35,6 +39,14 @@
 
 }
 
+.only-desktop{
+	display: none;
+}
+
+.only-mobile{
+	display: block;
+}
+
 @media only screen and (min-width: 600px) {
 	/* For tablets: */
 	.col-m-4 {width: 25%;}
@@ -46,6 +58,12 @@
 	[class*="header-"] {
 		padding: none;
 	}
+	.only-desktop{
+		display: none;
+	}
+	.only-mobile{
+		display: block;
+	}
 }
 @media only screen and (min-width: 1000px) {
 	/* For desktop: */
@@ -53,18 +71,26 @@
 	.col-10p {width: 10%;}
 	.col-15p {width: 15%;}
 	.col-for-sides {
-		width: 15%;
+		width: 10%;
 	}
 	.col-4 {width: 25%;}
 	.col-3 {width: 33.33333%;}
 	.col-2 {width: 50%;}
 	.col-for-page {
-		width: 70%;
+		width: 65%;
 
 	}
 	[class*="col-"] {
 		min-height: 20px;
 	}
+
+	.only-desktop{
+		display: block;
+	}
+	.only-mobile{
+		display: none;
+	}
+
 }
 
 
@@ -100,9 +126,9 @@ body {
 
 
 h1 {
-  color: #369;
+  color: #333;
   font-family: Nunito, Arial, sans-serif;
-  font-size: 250%;
+  font-size: 150%;
 }
 h2, h3 {
   color: #444;
@@ -111,10 +137,7 @@ h2, h3 {
 }
 
 
-a {
-  cursor: pointer;
-  cursor: hand;
-}
+
 button {
   font-family: Arial;
   background-color: #eee;
@@ -133,6 +156,26 @@ button:disabled {
   cursor: auto;
 }
 
+
+
+a{
+  text-decoration: none;
+  color: #006064;
+}
+
+
+a:hover {
+  color: #00363a;
+  text-decoration: underline;
+}
+nav *.active {
+  color: #039be5;
+}
+
+
+
+
+
 .button-row {
   display: block;
   margin: 10px 0px;
@@ -143,27 +186,6 @@ button:disabled {
   float: right;
 }
 
-
-/* Navigation link styles */
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-right: 10px;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-}
-nav a:visited, a:link {
-  color: #607D8B;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
-  color: #039be5;
-}
 
 .center {
     margin: auto;

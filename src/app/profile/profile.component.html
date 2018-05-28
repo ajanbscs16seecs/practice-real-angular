@@ -13,7 +13,7 @@
       <div class="col-dp dp">
         <!-- <img  src="{{profileImgUrl}}"/> -->
 
-        <cl-image  id="dp-img" class="profile-img" public-id="{{user.dpImgUrl}}">
+        <cl-image  id="dp-img centered-horizontal" class="profile-img" public-id="{{user.dpImgUrl}}">
           <cl-transformation  width="150" height="150" gravity="face" radius="100" crop="thumb">
           </cl-transformation>
 
@@ -28,14 +28,12 @@
             </file-drop>
         </div></div>
 
-        <div class="on-dp passthrough"  *ngIf="isEditable">
-          <p class="on-dp-text passthrough">Drop new profile image here...</p>
-          <div class="on-dp"  *ngIf="uploadingImg">
-            <mat-progress-spinner
-              [value]="progressValue" [mode]="mode" diameter="155" strokeWidth="5"></mat-progress-spinner>
-          </div>
-
-
+        <!-- <div class="on-dp passthrough"  *ngIf="isEditable"> -->
+          <p class="on-dp-text passthrough"  *ngIf="isEditable">Drop profile image<br> here...</p>
+        <!-- </div> -->
+        <div class="on-dp passthrough"  *ngIf="uploadingImg">
+          <mat-progress-spinner
+            [value]="progressValue" [mode]="mode" diameter="155" strokeWidth="5"></mat-progress-spinner>
         </div>
         <!-- <div class="on-dp spinner passthrough"  *ngIf="isEditable">
           <mat-progress-spinner
@@ -47,7 +45,7 @@
       <div id="col-info info">
 
         <div class="button-row" *ngIf="isEditable">
-          <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="!(loading)" (click)="addAssignment()" >Save Changes</button>
+          <button class="centered-horizontal" mat-raised-button color="accent" *ngIf="!(loading)" (click)="saveChanges()" >Save Changes</button>
           <mat-spinner class="centered-horizontal"   diameter="30"  *ngIf="loading"></mat-spinner>
         </div>
 
@@ -72,17 +70,17 @@
             <mat-form-field class="col-3 form-element" appearance="outline" *ngIf="isEditable">
               <mat-label>Email</mat-label>
               <input matInput [(ngModel)]="user.email" type="email" placeholder="Email" >
-              <mat-icon matSuffix>email</mat-icon>
+              <mat-icon matSuffix>alternate_email</mat-icon>
             </mat-form-field>
             <mat-form-field class="col-3 form-element" appearance="outline" *ngIf="isEditable">
               <mat-label>Old Password</mat-label>
               <input matInput [(ngModel)]="user.oldpassword" type="password" placeholder="Old password" >
-              <mat-icon matSuffix>email</mat-icon>
+              <mat-icon matSuffix>password</mat-icon>
             </mat-form-field>
             <mat-form-field class="col-3 form-element" appearance="outline" *ngIf="isEditable">
               <mat-label>Old Password</mat-label>
               <input matInput [(ngModel)]="user.newpassword" type="password" placeholder="New password" >
-              <mat-icon matSuffix>email</mat-icon>
+
             </mat-form-field>
 
 

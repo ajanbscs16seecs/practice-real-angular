@@ -36,6 +36,14 @@ export class SidebarComponent implements OnInit {
   }
 
 
+  logout(){
+    localStorage.clear();
+    this.userId=0;
+    this.loggedIn=false;
+    this.notloggedIn=true;
+    this.username='';
+  }
+
 }
 
 

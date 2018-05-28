@@ -1,7 +1,6 @@
 
 .col-dp{
   width: 100%;
-  display: flex;
   float: left;
   justify-content: center;
 }
@@ -25,7 +24,7 @@
 }
 
 
-#profile-img{
+.profile-img{
   height: 100px;
   width: 100px;
   border-radius:3px;
@@ -46,15 +45,16 @@
     width: 20%;
   }
 
-  #profile-img{
-    height: 90%;
-    width: 90%;
+  .profile-img{
+    width:90%;
+      height:90%;
     z-index: -5;
   }
 
   .col-info{
     width: 79%;
   }
+
 
 
 
@@ -66,6 +66,7 @@
 .profile-img-dropzone{
 
   opacity: 0.00001;
+  width: 100%;
 
 }
 
@@ -81,12 +82,16 @@
   width: 100px;
 }
 .on-dp-text{
-  width: 100%;
+
+
   text-align: center;
   color: #47f7df;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -ms-transform: translate(0%, 50%); /* IE 9 */
+  -webkit-transform: translate(0%, 50%); /* Safari */
+  transform: translate(10%, 70%);
 }
 .passthrough{
   pointer-events:none;

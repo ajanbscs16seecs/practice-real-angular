@@ -35,6 +35,7 @@
     "ngx-file-drop": "^4.0.4",
     "ngx-markdown": "^1.6.0",
     "ngx-uploader": "^4.2.4",
+    "node-sass": "^4.9.0",
     "photoswipe": "^4.1.2",
     "prismjs": "^1.14.0",
     "rxjs": "^6.2.0",
