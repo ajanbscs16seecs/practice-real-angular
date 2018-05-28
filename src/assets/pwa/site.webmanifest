@@ -1,19 +1,19 @@
 {
-    "name": "PracticeReal",
-    "short_name": "pr",
+    "name": "PracticeReal.com",
+    "short_name": "Practice Real",
     "icons": [
         {
-            "src": "assets/pwa/android-chrome-192x192.png",
+            "src": "/assets/pwa/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "assets/pwa/android-chrome-512x512.png",
+            "src": "/assets/pwa/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "theme_color": "#00e5ff",
-    "background_color": "#ffffff",
+    "theme_color": "#18ffff",
+    "background_color": "#18ffff",
     "display": "standalone"
 }

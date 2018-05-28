@@ -23,6 +23,7 @@
     "@angular/platform-browser": "6.0.3",
     "@angular/platform-browser-dynamic": "6.0.3",
     "@angular/router": "6.0.3",
+    "@angular/service-worker": "^6.0.3",
     "@cloudinary/angular-5.x": "^1.0.1",
     "@covalent/text-editor": "^1.0.0",
     "cloudinary-core": "^2.5.0",
