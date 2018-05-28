@@ -6,7 +6,7 @@
   height: 100%;
   position: fixed;
 
-  background-image: url('http://usersthink.com/wp-content/uploads/45-usersthink-stock-image.jpg');
+  background-image: '/src/assets/login-background.jpg';
   background-size: cover;
 }
 

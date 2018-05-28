@@ -22,7 +22,7 @@
   height: 100%;
   position: fixed;
 
-background-image: url('http://backgroundcheckall.com/wp-content/uploads/2017/12/background-images-for-registration-page-10.jpg');
+  background-image: '/src/assets/login-background.jpg';
   background-size: cover;
 }
 .sign-tab-group{

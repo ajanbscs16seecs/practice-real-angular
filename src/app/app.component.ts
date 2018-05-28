@@ -21,6 +21,8 @@ export class AppComponent {
   profileUrl:any;
   loggedIn:any=false;
   notloggedIn:any = true;
+  
+
 
   constructor(private router: Router,public snackBar: MatSnackBar) { }
 
@@ -67,6 +69,8 @@ export class AppComponent {
     this.notloggedIn=true;
     this.username='';
   }
+
+
 
 
 }

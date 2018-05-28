@@ -34,18 +34,15 @@ export class AssignmentService {
   // private countUrl:any = 'http://practicereal.arifullahjan.com/pr/count.php';  // URL to web api
 
 
+  private sampleAssignmetUrl:any = 'http://localhost/pr/assignment.php?id=1';  // URL to web api
+  private assignmentUrl:any = 'http://localhost/pr/assignment.php';  // URL to web api
+  private newAssignmentUrl:any = 'http://localhost/pr/assignment-new.php';  // URL to web api
+  private solutionUrl:any = 'http://localhost/pr/assignment-solution.php';  // URL to web api
+  private newSolutionUrl:any = 'http://localhost/pr/assignment-solution-new.php';  // URL to web api
+  private commentUrl:any = 'http://localhost/pr/comment.php';  // URL to web api
+  private newCommentUrl:any = 'http://localhost/pr/comment-new.php';  // URL to web api
+  private countUrl:any = 'http://localhost/pr/count.php';  // URL to web api
 
-
-
-  private sampleAssignmetUrl:any = 'https://accountingexplained.com/pr/assignment?id=1';  // URL to web api
-
-  private assignmentUrl:any = 'https://accountingexplained.com/pr/assignment';  // URL to web api
-  private newAssignmentUrl:any = 'https://accountingexplained.com/pr/assignment-new';  // URL to web api
-  private solutionUrl:any = 'https://accountingexplained.com/pr/assignment-solution';  // URL to web api
-  private newSolutionUrl:any = 'https://accountingexplained.com/pr/assignment-solution-new';  // URL to web api
-  private commentUrl:any = 'https://accountingexplained.com/pr/comment';  // URL to web api
-  private newCommentUrl:any = 'https://accountingexplained.com/pr/comment-new';  // URL to web api
-  private countUrl:any = 'https://accountingexplained.com/pr/count';  // URL to web api
 
 
 
@@ -132,8 +129,8 @@ export class AssignmentService {
 
   /** POST: add a new hero to the server */
   addAssignment (title:string,description:string,tags:any[],externalAttachment,authToken:string): Observable<Assignment> {
-    const url = `${this.newAssignmentUrl}?authToken=${authToken}&&title=${title}&&description=${description}&&tags=${tags}&&externalAttachment=${externalAttachment}`;
-    return this.http.get<Assignment>(url).pipe(
+    const url = `${this.newAssignmentUrl}?authToken=${authToken}&&title=${title}`;
+    return this.http.post<Assignment>(url, JSON.stringify({title,description,tags,externalAttachment}), {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
       tap((assignment: Assignment) => this.log(`added assignment w/ id=${assignment.id}`)),
       catchError(this.handleError<Assignment>('addAssignment'))
     );
@@ -142,8 +139,8 @@ export class AssignmentService {
 
   /** POST: add a new hero to the server */
   addAssignmentSol (assignmentId:number,text:string,externalAttachment,authToken:string): Observable<Assignment> {
-    const url = `${this.newSolutionUrl}?authToken=${authToken}&&assignmentId=${assignmentId}&&text=${text}&&externalAttachment=${externalAttachment}`;
-    return this.http.get<Assignment>(url).pipe(
+    const url = `${this.newSolutionUrl}?authToken=${authToken}`;
+    return this.http.post<Assignment>(url, JSON.stringify({assignmentId,text,externalAttachment}), {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
       tap((assignment: Assignment) => this.log(`added assignment w/ id=${assignment.id}`)),
       catchError(this.handleError<Assignment>('addAssignment'))
     );
@@ -163,8 +160,8 @@ export class AssignmentService {
 
   /** POST: add a new hero to the server */
   addAssignmentComment (text:string,assignmentId:number,authToken:string): Observable<Comment> {
-    const url = `${this.newCommentUrl}?authToken=${authToken}&&text=${text}&&assignmentId=${assignmentId}`;
-    return this.http.get<Comment>(url).pipe(
+    const url = `${this.newCommentUrl}?authToken=${authToken}`;
+    return this.http.post<Comment>(url, JSON.stringify({text,assignmentId}), {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
       tap((assignment: Comment) => this.log(`added comment w/ id=${assignment.id}`)),
       catchError(this.handleError<Comment>('addComment'))
     );

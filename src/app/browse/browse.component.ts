@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -9,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowseComponent implements OnInit {
 
-  searchtag:any;  
-  constructor() { }
+  searchtag:any;
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
+  }
+
+  search(){
+    if(this.searchtag!==''){
+      this.router.navigate(['/explore/'+this.searchtag]);
+
+    }
   }
 
 

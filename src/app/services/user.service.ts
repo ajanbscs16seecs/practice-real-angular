@@ -31,21 +31,23 @@ const headersCons = {
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-  // private sampleUserUrl = 'http://practicereal.arifullahjan.com/pr/user.php?id=1';  // URL to web api
-  //
-  // private dpUrl = 'http://practicereal.arifullahjan.com/pr/dp.php';  // URL to web api
-  //   private usersUrl = 'http://practicereal.arifullahjan.com/pr/user.php';  // URL to web api
-  //   private newUserUrl = 'http://practicereal.arifullahjan.com/pr/user-new.php';  // URL to web api
-  // private signinUrl = 'http://practicereal.arifullahjan.com/pr/signin.php';  // URL to web api
+  private sampleUserUrl = 'http://localhost/pr/user.php?id=1';  // URL to web api
 
-  private sampleUserUrl = 'https://accountingexplained.com/pr/user?id=1';  // URL to web api
+  private dpUrl = 'http://localhost/pr/dp.php';  // URL to web api
+    private usersUrl = 'http://localhost/pr/user.php';  // URL to web api
+    private newUserUrl = 'http://localhost/pr/user-new.php';  // URL to web api
+  private signinUrl = 'http://localhost/pr/signin.php';  // URL to web api
 
-  private dpUrl = 'https://accountingexplained.com/pr/dp';  // URL to web api
-    private usersUrl = 'https://accountingexplained.com/pr/user';  // URL to web api
-    private newUserUrl = 'https://accountingexplained.com/pr/user-new';  // URL to web api
-  private signinUrl = 'https://accountingexplained.com/pr/signin';  // URL to web api
+
+
+    // private sampleUserUrl = 'http://practicereal.arifullahjan.com/pr/user.php?id=1';  // URL to web api
+    //
+    // private dpUrl = 'http://practicereal.arifullahjan.com/pr/dp.php';  // URL to web api
+    //   private usersUrl = 'http://practicereal.arifullahjan.com/pr/user.php';  // URL to web api
+    //   private newUserUrl = 'http://practicereal.arifullahjan.com/pr/user-new.php';  // URL to web api
+    // private signinUrl = 'http://practicereal.arifullahjan.com/pr/signin.php';  // URL to web api
+
   public authToken: string;
-
 
   constructor(
     private http: HttpClient,
@@ -58,8 +60,7 @@ export class UserService {
 
 
     login(email: string, password: string): Observable<boolean> {
-        const url = `${this.signinUrl}?email=${email}&&password=${password}`;
-        return this.http.get(url).pipe(
+        return this.http.post(this.signinUrl, JSON.stringify({email, password}), {headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
           map((response: any) => {
             // login successful if there's a jwt token in the response
             const authToken = response && response.authToken;
@@ -139,9 +140,8 @@ export class UserService {
   /** POST: add a new hero to the server */
   addUser (username:String,email:String,password:String): Observable<any> {
 
-
-    const url = `${this.signinUrl}?email=${email}&&password=${password}&&username=${username}`;
-    return this.http.get(url).pipe(
+    //
+    return this.http.post(this.signinUrl,JSON.stringify({username,email,password}) ,{headers: new HttpHeaders({'Content-Type': 'application/json' ,'Access-Control-Allow-Origin':'*'})}).pipe(
       map((response: any) => {
         // login successful if there's a jwt token in the response
         const authToken = response && response.authToken;
