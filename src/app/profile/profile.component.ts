@@ -203,6 +203,8 @@ export class ProfileComponent implements OnInit {
 
             this.uploadingImg = true;
             this.userService.postDp(file,this.authToken).subscribe(event => {
+
+              // this.uploadingImg = false;
               // Via this API, you get access to the raw event stream.
               // Look for upload progress events.
               if (event.type === HttpEventType.UploadProgress) {

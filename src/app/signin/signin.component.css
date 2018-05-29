@@ -5,8 +5,7 @@
   width: 100%;
   height: 100%;
   position: fixed;
-
-  background-image: '/src/assets/login-background.jpg';
+  background-image: url("https://www.sevenforums.com/attachments/general-discussion/250721d1486599828t-any-ideas-how-my-login-background-screen-changed-its-own-backgrounddefault.jpg");
   background-size: cover;
 }
 

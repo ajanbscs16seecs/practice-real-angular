@@ -44,7 +44,7 @@ username:any;
 authToken:any;
 loggedIn:any;
 assignmentId:any;
-loading:any=true;
+loading:any=false;
 
 
   constructor(private route: ActivatedRoute,

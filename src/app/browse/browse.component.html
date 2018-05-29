@@ -14,7 +14,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Search</mat-label>
             <input matInput [(ngModel)]="searchtag" placeholder="Search tag">
-            <mat-icon matSuffix>search</mat-icon>
+						<button mat-icon-button matSuffix  routerLink="/explore/{{searchtag}}"><mat-icon>search</mat-icon></button>
+
             <!-- <mat-hint>Search</mat-hint> -->
           </mat-form-field>
             <!-- <div id="search-button"><i class="fas fa-search"></i></div> -->
